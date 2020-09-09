@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_portal_theme_assets_frontend"
+              inherit_id="web.assets_frontend"
+              name="Website Portal Thmeme Assets Frontend">
+        <xpath expr="link[last()]" position="after">
+            <link rel="stylesheet"
+                  href="/project_scrum_portal/static/src/css/style.css"/>
+            <script type="text/javascript"
+                    src="/project_scrum_portal/static/src/js/moment.js"/>
+            <script type="text/javascript"
+                    src="/project_scrum_portal/static/src/js/bootstrap-datepicker.js"/>
+            <link rel="stylesheet"
+                  href="/project_scrum_portal/static/src/css/datepicker3.css"/>
+            <script type="text/javascript"
+                    src="/project_scrum_portal/static/src/js/canvasjs.min.js"/>
+            <script type="text/javascript"
+                    src="/project_scrum_portal/static/src/js/js.cookie.js"/>
+            <script type="text/javascript"
+                    src="/project_scrum_portal/static/src/js/custom.js"/>
+        </xpath>
+    </template>
+</odoo>

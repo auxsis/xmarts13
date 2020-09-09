@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+sales_commission_account,sales_commission.account_user,model_sales_commission,account.group_account_invoice,1,1,1,0
+sales_commission_sales_user,sales_commission.sales_user,model_sales_commission,sales_team.group_sale_salesman,1,1,1,0
+sales_commission_employee,sales_commission.employee,model_sales_commission,base.group_user,1,0,0,0
+sales_commission_line_account,sales_commission_line.account_user,model_sales_commission_line,account.group_account_invoice,1,1,1,0
+sales_commission_line_sales_user,sales_commission_line.sales_user,model_sales_commission_line,sales_team.group_sale_salesman,1,1,1,0
+sales_commission_line employee,sales_commission_line.employee,model_sales_commission_line,base.group_user,1,0,0,0

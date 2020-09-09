@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_form_inherit_commission" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment"/>
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='payment_transaction_id']" position="after">
+             	<field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>
+                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+                <field name="sales_user_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+                <field name="commission_manager_id" invisible='1'/>
+                <field name="commission_person_id" invisible='1'/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_account_payment_invoice_inherit_commission" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+        <field name="arch" type="xml">
+             <field name="communication" position="after">
+                <field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>
+                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+                <field name="sales_user_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+                <field name="commission_manager_id" invisible='1'/>
+                <field name="commission_person_id" invisible='1'/>
+            </field>
+        </field>
+    </record>
+    
+</odoo>

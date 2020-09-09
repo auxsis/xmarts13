@@ -1,0 +1,1301 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sales_commission_calculation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c-20170207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-15 17:18+0000\n"
+"PO-Revision-Date: 2017-06-15 13:29-0400\n"
+"Last-Translator: Nelson Ramírez <info@konos.cl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_CL\n"
+"X-Generator: Poedit 2.0.1\n"
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.view_account_payment_invoice_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<field name=\"communication\" position=\"after\">\n"
+"                <field name=\"sales_commission_apply\" attrs=\"{'invisible': [('partner_type', '!=', 'customer')]}\"/>\n"
+"                <field name=\"sales_team_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_user_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </field>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<field name=\"communication\" position=\"after\">\n"
+"                <field name=\"sales_commission_apply\" attrs=\"{'invisible': [('partner_type', '!=', 'customer')]}\"/>\n"
+"                <field name=\"sales_team_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_user_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </field>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.view_order_form_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<field name=\"payment_term_id\" position=\"after\">\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </field>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<field name=\"payment_term_id\" position=\"after\">\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </field>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_form_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<form string=\"Sales Commission Form\" create=\"false\" edit=\"false\">\n"
+"                <header>\n"
+"                 <!--   <button string=\"Create Invoice\" type=\"object\" name=\"action_create_invoice\"\n"
+"                            states=\"draft\" class=\"oe_highlight\"/>\n"
+"                    <button string=\"Cancel\" type=\"object\" name=\"action_cancel\"\n"
+"                            states=\"draft\"/>-->\n"
+"                    <field name=\"state\" widget=\"statusbar\" states=\"draft,invoice\" statusbar_visible=\"draft\"/>\n"
+"                </header>\n"
+"                <sheet>\n"
+"                    <group>\n"
+"                        <group>\n"
+"                            <field name=\"name\"/>\n"
+"                            <field name=\"sales_commission_id\"/>\n"
+"                            <field name=\"product_id\" invisible=\"1\"/>\n"
+"                            <field name=\"date\"/>\n"
+"                            <field name=\"commission_user_id\"/>\n"
+"                            <field name=\"sales_team_id\"/>\n"
+"                            <field name=\"amount\" widget=\"monetary\"/>\n"
+"                            <field name=\"source_currency\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <field name=\"type\"/>\n"
+"                            <field name=\"origin\"/>\n"
+"                            <field name=\"invoice_id\"/>\n"
+"                            <field name=\"src_invoice_id\"/>\n"
+"                            <field name=\"src_order_id\"/>\n"
+"                            <field name=\"src_payment_id\"/>\n"
+"                            <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                            <field name=\"currency_id\"/>\n"
+"                            <field name=\"amount_company_currency\" widget=\"monetary\"/>\n"
+"                            <field name=\"is_paid\"/>\n"
+"                        </group>\n"
+"                        <field name=\"notes\" placeholder=\"Description...\"/>\n"
+"                        <group/>\n"
+"                    </group>\n"
+"                </sheet>\n"
+"                <div class=\"oe_chatter\">\n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                 </div>\n"
+"            </form>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<form string=\"Sales Commission Form\" create=\"false\" edit=\"false\">\n"
+"                <header>\n"
+"                 <!--   <button string=\"Create Invoice\" type=\"object\" name=\"action_create_invoice\"\n"
+"                            states=\"draft\" class=\"oe_highlight\"/>\n"
+"                    <button string=\"Cancel\" type=\"object\" name=\"action_cancel\"\n"
+"                            states=\"draft\"/>-->\n"
+"                    <field name=\"state\" widget=\"statusbar\" states=\"draft,invoice\" statusbar_visible=\"draft\"/>\n"
+"                </header>\n"
+"                <sheet>\n"
+"                    <group>\n"
+"                        <group>\n"
+"                            <field name=\"name\"/>\n"
+"                            <field name=\"sales_commission_id\"/>\n"
+"                            <field name=\"product_id\" invisible=\"1\"/>\n"
+"                            <field name=\"date\"/>\n"
+"                            <field name=\"commission_user_id\"/>\n"
+"                            <field name=\"sales_team_id\"/>\n"
+"                            <field name=\"amount\" widget=\"monetary\"/>\n"
+"                            <field name=\"source_currency\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <field name=\"type\"/>\n"
+"                            <field name=\"origin\"/>\n"
+"                            <field name=\"invoice_id\"/>\n"
+"                            <field name=\"src_invoice_id\"/>\n"
+"                            <field name=\"src_order_id\"/>\n"
+"                            <field name=\"src_payment_id\"/>\n"
+"                            <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                            <field name=\"currency_id\"/>\n"
+"                            <field name=\"amount_company_currency\" widget=\"monetary\"/>\n"
+"                            <field name=\"is_paid\"/>\n"
+"                        </group>\n"
+"                        <field name=\"notes\" placeholder=\"Description...\"/>\n"
+"                        <group/>\n"
+"                    </group>\n"
+"                </sheet>\n"
+"                <div class=\"oe_chatter\">\n"
+"                        <field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n"
+"                        <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                 </div>\n"
+"            </form>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_worksheet_form_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<form string=\"Sales Commission Form\">\n"
+"                <header>\n"
+"                    <button string=\"Create Invoice\" type=\"object\" name=\"action_create_invoice\" states=\"draft\" class=\"oe_highlight\"/>\n"
+"                    <button string=\"Cancel\" type=\"object\" name=\"action_cancel\" states=\"draft\"/>\n"
+"                    <button string=\"Reset to Draft\" type=\"object\" name=\"action_draft\" states=\"cancel\"/>\n"
+"                    <field name=\"state\" widget=\"statusbar\" states=\"draft,invoice,paid,cancel\" statusbar_visible=\"draft\"/>\n"
+"                </header>\n"
+"                <sheet>\n"
+"                    <h1><field name=\"name\"/></h1>\n"
+"                    <group>\n"
+"                        <group>\n"
+"                            <field name=\"commission_user_id\"/>\n"
+"                            <field name=\"start_date\"/>\n"
+"                            <field name=\"end_date\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <field name=\"product_id\"/>\n"
+"                            <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                            <field name=\"amount\" widget=\"monetary\"/>\n"
+"                            <field name=\"currency_id\"/>\n"
+"                            <field name=\"invoice_id\" readonly=\"1\"/>\n"
+"                            <field name=\"is_paid\"/>\n"
+"                        </group>\n"
+"                    </group>\n"
+"                    <notebook>\n"
+"                        <page string=\"Sales Commission Lines\">\n"
+"                            <group>\n"
+"                                <field name=\"sales_commission_line\" nolabel=\"1\">\n"
+"                                    <tree colors=\"black:state=='draft';red:state in ('cancel', 'exception')\">\n"
+"                                        <field name=\"date\"/>\n"
+"                                        <field name=\"type\"/>\n"
+"                                        <field name=\"amount\" sum=\"amount\" widget=\"monetary\"/>\n"
+"                                        <field name=\"source_currency\"/>\n"
+"                                        <field name=\"amount_company_currency\" sum=\"amount_company_currency\"/>\n"
+"                                        <field name=\"currency_id\"/>\n"
+"                                        <field name=\"state\"/>\n"
+"                                        <field name=\"is_paid\"/>\n"
+"                                    </tree>\n"
+"                                </field>\n"
+"                            </group>\n"
+"                        </page>\n"
+"                        <group>\n"
+"                            <field name=\"notes\" placeholder=\"Description...\"/>\n"
+"                        </group>\n"
+"                    </notebook>\n"
+"                </sheet>\n"
+"                <div class=\"oe_chatter\">\n"
+"                    <field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n"
+"                    <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                 </div>\n"
+"            </form>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<form string=\"Sales Commission Form\">\n"
+"                <header>\n"
+"                    <button string=\"Create Invoice\" type=\"object\" name=\"action_create_invoice\" states=\"draft\" class=\"oe_highlight\"/>\n"
+"                    <button string=\"Cancel\" type=\"object\" name=\"action_cancel\" states=\"draft\"/>\n"
+"                    <button string=\"Reset to Draft\" type=\"object\" name=\"action_draft\" states=\"cancel\"/>\n"
+"                    <field name=\"state\" widget=\"statusbar\" states=\"draft,invoice,paid,cancel\" statusbar_visible=\"draft\"/>\n"
+"                </header>\n"
+"                <sheet>\n"
+"                    <h1><field name=\"name\"/></h1>\n"
+"                    <group>\n"
+"                        <group>\n"
+"                            <field name=\"commission_user_id\"/>\n"
+"                            <field name=\"start_date\"/>\n"
+"                            <field name=\"end_date\"/>\n"
+"                        </group>\n"
+"                        <group>\n"
+"                            <field name=\"product_id\"/>\n"
+"                            <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                            <field name=\"amount\" widget=\"monetary\"/>\n"
+"                            <field name=\"currency_id\"/>\n"
+"                            <field name=\"invoice_id\" readonly=\"1\"/>\n"
+"                            <field name=\"is_paid\"/>\n"
+"                        </group>\n"
+"                    </group>\n"
+"                    <notebook>\n"
+"                        <page string=\"Sales Commission Lines\">\n"
+"                            <group>\n"
+"                                <field name=\"sales_commission_line\" nolabel=\"1\">\n"
+"                                    <tree colors=\"black:state=='draft';red:state in ('cancel', 'exception')\">\n"
+"                                        <field name=\"date\"/>\n"
+"                                        <field name=\"type\"/>\n"
+"                                        <field name=\"amount\" sum=\"amount\" widget=\"monetary\"/>\n"
+"                                        <field name=\"source_currency\"/>\n"
+"                                        <field name=\"amount_company_currency\" sum=\"amount_company_currency\"/>\n"
+"                                        <field name=\"currency_id\"/>\n"
+"                                        <field name=\"state\"/>\n"
+"                                        <field name=\"is_paid\"/>\n"
+"                                    </tree>\n"
+"                                </field>\n"
+"                            </group>\n"
+"                        </page>\n"
+"                        <group>\n"
+"                            <field name=\"notes\" placeholder=\"Description...\"/>\n"
+"                        </group>\n"
+"                    </notebook>\n"
+"                </sheet>\n"
+"                <div class=\"oe_chatter\">\n"
+"                    <field name=\"message_follower_ids\" widget=\"mail_followers\"/>\n"
+"                    <field name=\"message_ids\" widget=\"mail_thread\"/>\n"
+"                 </div>\n"
+"            </form>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.view_template_property_form_inherit
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<group name=\"email_template_and_project\" position=\"after\">\n"
+"                 <group string=\"Sales Commission\">\n"
+"                    <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"is_commission_product\"/>\n"
+"                    <field name=\"is_apply\" invisible=\"1\"/>\n"
+"                </group>\n"
+"             </group>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<group name=\"email_template_and_project\" position=\"after\">\n"
+"                 <group string=\"Sales Commission\">\n"
+"                    <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"is_commission_product\"/>\n"
+"                    <field name=\"is_apply\" invisible=\"1\"/>\n"
+"                </group>\n"
+"             </group>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.product_category_form_view_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<group name=\"first\" position=\"after\"> \n"
+"                <group name=\"Sales Commission\">\n"
+"                    <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"is_apply\" invisible=\"1\"/>\n"
+"                </group>\n"
+"             </group>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<group name=\"first\" position=\"after\"> \n"
+"                <group name=\"Sales Commission\">\n"
+"                    <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                    <field name=\"is_apply\" invisible=\"1\"/>\n"
+"                </group>\n"
+"             </group>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_worksheet_search_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<search>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                <group string=\"Group By\">\n"
+"                    <filter name=\"by_sales_user_id\" string=\"Sales User\" context=\"{'group_by': 'commission_user_id'}\"/>\n"
+"                    <filter name=\"by_company_id\" string=\"Company\" context=\"{'group_by': 'company_id'}\"/>\n"
+"                </group>\n"
+"            </search>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<search>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                <group string=\"Group By\">\n"
+"                    <filter name=\"by_sales_user_id\" string=\"Sales User\" context=\"{'group_by': 'commission_user_id'}\"/>\n"
+"                    <filter name=\"by_company_id\" string=\"Company\" context=\"{'group_by': 'company_id'}\"/>\n"
+"                </group>\n"
+"            </search>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_search_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<search>\n"
+"                <field name=\"product_id\"/>\n"
+"                <field name=\"sales_team_id\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                <group string=\"Group By\">\n"
+"                    <filter name=\"by_product_id\" string=\"Product\" context=\"{'group_by': 'product_id'}\"/>\n"
+"                    <filter name=\"by_sales_team_id\" string=\"Sales Team\" context=\"{'group_by': 'sales_team_id'}\"/>\n"
+"                    <filter name=\"by_sales_user_id\" string=\"Sales User\" context=\"{'group_by': 'commission_user_id'}\"/>\n"
+"                    <filter name=\"by_company_id\" string=\"Company\" context=\"{'group_by': 'company_id'}\"/>\n"
+"                </group>\n"
+"            </search>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<search>\n"
+"                <field name=\"product_id\"/>\n"
+"                <field name=\"sales_team_id\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"company_id\" groups=\"base.group_multi_company\"/>\n"
+"                <group string=\"Group By\">\n"
+"                    <filter name=\"by_product_id\" string=\"Product\" context=\"{'group_by': 'product_id'}\"/>\n"
+"                    <filter name=\"by_sales_team_id\" string=\"Sales Team\" context=\"{'group_by': 'sales_team_id'}\"/>\n"
+"                    <filter name=\"by_sales_user_id\" string=\"Sales User\" context=\"{'group_by': 'commission_user_id'}\"/>\n"
+"                    <filter name=\"by_company_id\" string=\"Company\" context=\"{'group_by': 'company_id'}\"/>\n"
+"                </group>\n"
+"            </search>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_id
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<t t-name=\"sales_commission_calculation.sales_commission_id\">\n"
+"                <t t-foreach=\"docs\" t-as=\"doc\">\n"
+"                    <t t-call=\"report.internal_layout\">\n"
+"                         <div class=\"page\">\n"
+"                             <div>\n"
+"                                 <h3><strong>\n"
+"                                      <p align=\"center\">Sales Commission Details</p>\n"
+"                                     <span t-field=\"doc.name\"/> - <span t-field=\"doc.state\"/></strong>\n"
+"                                 </h3>\n"
+"                             </div>\n"
+"                             <table class=\"table table-responsive\">\n"
+"                                 <tr>\n"
+"                                     <td><strong>Product</strong></td><td><span t-field=\"doc.product_id.name\"/></td>\n"
+"                                     <td><strong>User Type</strong></td><td><span t-field=\"doc.type\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Commission User</strong></td><td><span t-field=\"doc.commission_user_id.name\"/></td>\n"
+"                                     <td><strong>Account Invoice</strong></td><td><span t-field=\"doc.invoice_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Sales Team</strong></td><td><span t-field=\"doc.sales_team_id.name\"/></td>\n"
+"                                     <td><strong>Amount</strong></td><td><span t-field=\"doc.amount\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Description</strong></td><td colspan=\"3\"><span t-field=\"doc.notes\"/></td>\n"
+"                                 </tr>\n"
+"                             </table>\n"
+"                        </div>\n"
+"                </t>\n"
+"               </t>\n"
+"        </t>\n"
+"    "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<t t-name=\"sales_commission_calculation.sales_commission_id\">\n"
+"                <t t-foreach=\"docs\" t-as=\"doc\">\n"
+"                    <t t-call=\"report.internal_layout\">\n"
+"                         <div class=\"page\">\n"
+"                             <div>\n"
+"                                 <h3><strong>\n"
+"                                      <p align=\"center\">Sales Commission Details</p>\n"
+"                                     <span t-field=\"doc.name\"/> - <span t-field=\"doc.state\"/></strong>\n"
+"                                 </h3>\n"
+"                             </div>\n"
+"                             <table class=\"table table-responsive\">\n"
+"                                 <tr>\n"
+"                                     <td><strong>Product</strong></td><td><span t-field=\"doc.product_id.name\"/></td>\n"
+"                                     <td><strong>User Type</strong></td><td><span t-field=\"doc.type\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Commission User</strong></td><td><span t-field=\"doc.commission_user_id.name\"/></td>\n"
+"                                     <td><strong>Account Invoice</strong></td><td><span t-field=\"doc.invoice_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Sales Team</strong></td><td><span t-field=\"doc.sales_team_id.name\"/></td>\n"
+"                                     <td><strong>Amount</strong></td><td><span t-field=\"doc.amount\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Description</strong></td><td colspan=\"3\"><span t-field=\"doc.notes\"/></td>\n"
+"                                 </tr>\n"
+"                             </table>\n"
+"                        </div>\n"
+"                </t>\n"
+"               </t>\n"
+"        </t>\n"
+"    "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_worksheet_id
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<t t-name=\"sales_commission_calculation.sales_commission_worksheet_id\">\n"
+"                <t t-foreach=\"docs\" t-as=\"doc\">\n"
+"                    <t t-call=\"report.internal_layout\">\n"
+"                         <div class=\"page\">\n"
+"                             <div>\n"
+"                                 <h3><strong>\n"
+"                                      <p align=\"center\">Sales Commission Worksheet Details</p>\n"
+"                                     <span t-field=\"doc.name\"/> - <span t-field=\"doc.state\"/></strong>\n"
+"                                 </h3>\n"
+"                             </div>\n"
+"                             <table class=\"table table-responsive\">\n"
+"                                 <tr>\n"
+"                                     <td><strong>Sales Member</strong></td><td><span t-field=\"doc.commission_user_id.name\"/></td>\n"
+"                                     <td><strong>Commission Product</strong></td><td><span t-field=\"doc.product_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Start Date</strong></td><td><span t-field=\"doc.start_date\"/></td>\n"
+"                                     <td><strong>End Date</strong></td><td><span t-field=\"doc.end_date\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                    <td><strong>Total Commision Amount</strong></td><td><span t-field=\"doc.amount\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.company_id.currency_id&quot;}\"/></td>\n"
+"                                    <td><strong>Company</strong></td><td><span t-field=\"doc.company_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Commission Invoice</strong></td><td><span t-field=\"doc.invoice_id\"/></td>\n"
+"                                     <td><strong>Is Commission Paid</strong></td><td><span t-field=\"doc.is_paid\"/></td>\n"
+"                                 </tr>\n"
+"                             </table>\n"
+"                             <h3>\n"
+"                             \t<strong><p>Sales Commission Lines</p></strong>\n"
+"                             \t<table class=\"table table-responsive\">\n"
+"                                <tr>\n"
+"                                    <td><strong>Commission Date</strong></td>\n"
+"                                    <td><strong>User Type</strong></td>\n"
+"                                    <td><strong>Amount</strong></td>\n"
+"                                    <td><strong>Amount in Company Currency</strong></td>\n"
+"                                    <td><strong>Status</strong></td>\n"
+"                                    <td><strong>Is Commision Line Paid</strong></td>\n"
+"                                </tr>\n"
+"                                <t t-foreach=\"doc.sales_commission_line\" t-as=\"line\">\n"
+"                                    <tr>\n"
+"                                        <td><span t-field=\"line.date\"/></td>\n"
+"                                        <td><span t-field=\"line.type\"/></td>\n"
+"                                        <td><span t-field=\"line.amount\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;line.source_currency&quot;}\"/></td>\n"
+"                                        <td><span t-field=\"line.amount_company_currency\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;line.currency_id&quot;}\"/></td>\n"
+"                                        <td><span t-field=\"line.state\"/></td>\n"
+"                                        <td><span t-field=\"line.is_paid\"/></td>\n"
+"                                    </tr>\n"
+"                                </t>\n"
+"                             </table>\n"
+"                             </h3>\n"
+"                             \n"
+"                        </div>\n"
+"                </t>\n"
+"               </t>\n"
+"        </t>\n"
+"        \n"
+"    "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<t t-name=\"sales_commission_calculation.sales_commission_worksheet_id\">\n"
+"                <t t-foreach=\"docs\" t-as=\"doc\">\n"
+"                    <t t-call=\"report.internal_layout\">\n"
+"                         <div class=\"page\">\n"
+"                             <div>\n"
+"                                 <h3><strong>\n"
+"                                      <p align=\"center\">Sales Commission Worksheet Details</p>\n"
+"                                     <span t-field=\"doc.name\"/> - <span t-field=\"doc.state\"/></strong>\n"
+"                                 </h3>\n"
+"                             </div>\n"
+"                             <table class=\"table table-responsive\">\n"
+"                                 <tr>\n"
+"                                     <td><strong>Sales Member</strong></td><td><span t-field=\"doc.commission_user_id.name\"/></td>\n"
+"                                     <td><strong>Commission Product</strong></td><td><span t-field=\"doc.product_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Start Date</strong></td><td><span t-field=\"doc.start_date\"/></td>\n"
+"                                     <td><strong>End Date</strong></td><td><span t-field=\"doc.end_date\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                    <td><strong>Total Commision Amount</strong></td><td><span t-field=\"doc.amount\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;doc.company_id.currency_id&quot;}\"/></td>\n"
+"                                    <td><strong>Company</strong></td><td><span t-field=\"doc.company_id.name\"/></td>\n"
+"                                 </tr>\n"
+"                                 <tr>\n"
+"                                     <td><strong>Commission Invoice</strong></td><td><span t-field=\"doc.invoice_id\"/></td>\n"
+"                                     <td><strong>Is Commission Paid</strong></td><td><span t-field=\"doc.is_paid\"/></td>\n"
+"                                 </tr>\n"
+"                             </table>\n"
+"                             <h3>\n"
+"                             \t<strong><p>Sales Commission Lines</p></strong>\n"
+"                             \t<table class=\"table table-responsive\">\n"
+"                                <tr>\n"
+"                                    <td><strong>Commission Date</strong></td>\n"
+"                                    <td><strong>User Type</strong></td>\n"
+"                                    <td><strong>Amount</strong></td>\n"
+"                                    <td><strong>Amount in Company Currency</strong></td>\n"
+"                                    <td><strong>Status</strong></td>\n"
+"                                    <td><strong>Is Commision Line Paid</strong></td>\n"
+"                                </tr>\n"
+"                                <t t-foreach=\"doc.sales_commission_line\" t-as=\"line\">\n"
+"                                    <tr>\n"
+"                                        <td><span t-field=\"line.date\"/></td>\n"
+"                                        <td><span t-field=\"line.type\"/></td>\n"
+"                                        <td><span t-field=\"line.amount\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;line.source_currency&quot;}\"/></td>\n"
+"                                        <td><span t-field=\"line.amount_company_currency\" t-field-options=\"{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;line.currency_id&quot;}\"/></td>\n"
+"                                        <td><span t-field=\"line.state\"/></td>\n"
+"                                        <td><span t-field=\"line.is_paid\"/></td>\n"
+"                                    </tr>\n"
+"                                </t>\n"
+"                             </table>\n"
+"                             </h3>\n"
+"                             \n"
+"                        </div>\n"
+"                </t>\n"
+"               </t>\n"
+"        </t>\n"
+"        \n"
+"    "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_tree_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<tree string=\"Sales Commission List\" create=\"false\" edit=\"false\">\n"
+"                <field name=\"sales_commission_id\"/>\n"
+"                <field name=\"sales_team_id\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"product_id\"/>\n"
+"                <field name=\"origin\"/>\n"
+"                <field name=\"amount\" widget=\"monetary\"/>\n"
+"                <field name=\"source_currency\"/>\n"
+"                <field name=\"amount_company_currency\" widget=\"monetary\"/>\n"
+"                <field name=\"currency_id\"/>\n"
+"                <field name=\"type\"/>\n"
+"                <field name=\"company_id\" invisible=\"1\" groups=\"base.group_multi_company\"/>\n"
+"                <field name=\"is_paid\"/>\n"
+"                <field name=\"state\"/>\n"
+"            </tree>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<tree string=\"Sales Commission List\" create=\"false\" edit=\"false\">\n"
+"                <field name=\"sales_commission_id\"/>\n"
+"                <field name=\"sales_team_id\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"product_id\"/>\n"
+"                <field name=\"origin\"/>\n"
+"                <field name=\"amount\" widget=\"monetary\"/>\n"
+"                <field name=\"source_currency\"/>\n"
+"                <field name=\"amount_company_currency\" widget=\"monetary\"/>\n"
+"                <field name=\"currency_id\"/>\n"
+"                <field name=\"type\"/>\n"
+"                <field name=\"company_id\" invisible=\"1\" groups=\"base.group_multi_company\"/>\n"
+"                <field name=\"is_paid\"/>\n"
+"                <field name=\"state\"/>\n"
+"            </tree>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.sales_commission_worksheet_tree_view
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<tree string=\"Sales Commission List\">\n"
+"                <field name=\"name\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"start_date\"/>\n"
+"                <field name=\"end_date\"/>\n"
+"                <field name=\"amount\" widget=\"monetary\"/>\n"
+"                <field name=\"currency_id\"/>\n"
+"                <field name=\"state\"/>\n"
+"                <field name=\"company_id\" invisible=\"1\" groups=\"base.group_multi_company\"/>\n"
+"            </tree>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<tree string=\"Sales Commission List\">\n"
+"                <field name=\"name\"/>\n"
+"                <field name=\"commission_user_id\"/>\n"
+"                <field name=\"start_date\"/>\n"
+"                <field name=\"end_date\"/>\n"
+"                <field name=\"amount\" widget=\"monetary\"/>\n"
+"                <field name=\"currency_id\"/>\n"
+"                <field name=\"state\"/>\n"
+"                <field name=\"company_id\" invisible=\"1\" groups=\"base.group_multi_company\"/>\n"
+"            </tree>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.view_sales_config_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//div[@id='main']\" position=\"inside\">\n"
+"\t            <group string=\"Sales Commission\" name=\"commission_based_on\">\n"
+"\t                <field name=\"when_to_pay\" widget=\"radio\"/>\n"
+"\t                <field name=\"commission_based_on\" widget=\"radio\"/>\n"
+"\t            </group>\n"
+"            </xpath>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//div[@id='main']\" position=\"inside\">\n"
+"\t            <group string=\"Sales Commission\" name=\"commission_based_on\">\n"
+"\t                <field name=\"when_to_pay\" widget=\"radio\"/>\n"
+"\t                <field name=\"commission_based_on\" widget=\"radio\"/>\n"
+"\t            </group>\n"
+"            </xpath>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.view_account_payment_form_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//field[@name='communication']\" position=\"after\">\n"
+"             \t<field name=\"sales_commission_apply\" attrs=\"{'invisible': [('partner_type', '!=', 'customer')]}\"/>\n"
+"                <field name=\"sales_team_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_user_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//field[@name='communication']\" position=\"after\">\n"
+"             \t<field name=\"sales_commission_apply\" attrs=\"{'invisible': [('partner_type', '!=', 'customer')]}\"/>\n"
+"                <field name=\"sales_team_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_user_id\" attrs=\"{'invisible': [('sales_commission_apply', '!=', True)]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.crm_team_view_form_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//form/sheet/group/group[@name='right']\" position=\"inside\">\n"
+"                <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                <field name=\"is_apply\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//form/sheet/group/group[@name='right']\" position=\"inside\">\n"
+"                <field name=\"sales_manager_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                <field name=\"sales_person_commission\" attrs=\"{'invisible': [('is_apply', '!=', True)]}\"/>\n"
+"                <field name=\"is_apply\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.ui.view,arch_db:sales_commission_calculation.invoice_supplier_form_inherit_commission
+msgid ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//form/sheet/notebook/page[2]/group/group[1]/field[@name='user_id']\" position=\"after\">\n"
+"                <field name=\"sale_commission_id\" attrs=\"{'readonly': [('state', '!=', 'draft')]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+msgstr ""
+"<?xml version=\"1.0\"?>\n"
+"<xpath expr=\"//form/sheet/notebook/page[2]/group/group[1]/field[@name='user_id']\" position=\"after\">\n"
+"                <field name=\"sale_commission_id\" attrs=\"{'readonly': [('state', '!=', 'draft')]}\"/>\n"
+"                <field name=\"commission_manager_id\" invisible=\"1\"/>\n"
+"                <field name=\"commission_person_id\" invisible=\"1\"/>\n"
+"            </xpath>\n"
+"        "
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_invoice_id
+#: field:sales.commission.line,invoice_id:0
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Account Invoice"
+msgstr "Factura"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_needaction
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_needaction
+#: field:sales.commission,message_needaction:0
+#: field:sales.commission.line,message_needaction:0
+msgid "Action Needed"
+msgstr "Acción necesaria"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_amount
+#: field:sales.commission.line,amount:0
+#: view:website:sales_commission_calculation.sales_commission_id
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Amount"
+msgstr "Importe"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_amount_company_currency
+#: field:sales.commission.line,amount_company_currency:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Amount in Company Currency"
+msgstr "Monto en Moneda Local"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sale_config_settings_commission_based_on
+#: field:sale.config.settings,commission_based_on:0
+msgid "Calculation Based On"
+msgstr "Cáculo Basado en"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission,state:0 selection:sales.commission.line,state:0
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_product_id
+#: field:sales.commission,product_id:0
+msgid "Commision Product For Invoice"
+msgstr "Comisión por Producto en Factura"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_date
+#: field:sales.commission.line,date:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Commission Date"
+msgstr "Fecha de Comisión"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_invoice_id
+#: field:sales.commission,invoice_id:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Commission Invoice"
+msgstr "Factura de Comisión"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_sales_commission_line
+#: field:sales.commission,sales_commission_line:0
+msgid "Commission Line"
+msgstr "Línea de Comisión"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Commission Product"
+msgstr "Producto de Comisión"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Commission User"
+msgstr "Usuario de Comisión"
+
+#. module: sales_commission_calculation
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_worksheet_menu
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_worksheet_menu_invoice
+msgid "Commission Worksheets"
+msgstr "Hojas de Comisiones"
+
+#. module: sales_commission_calculation
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_menu_main
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_menu_main_invoice
+msgid "Commissions"
+msgstr "Comisiones"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_company_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_company_id
+#: field:sales.commission,company_id:0 field:sales.commission.line,company_id:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_create_uid
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_create_uid
+#: field:sales.commission,create_uid:0 field:sales.commission.line,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_create_date
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_create_date
+#: field:sales.commission,create_date:0
+#: field:sales.commission.line,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_currency_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_currency_id
+#: field:sales.commission,currency_id:0
+#: field:sales.commission.line,currency_id:0
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: sales_commission_calculation
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Customer Payment"
+msgstr "Pago de Cliente"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_line_message_last_post
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_message_last_post
+#: help:sales.commission,message_last_post:0
+#: help:sales.commission.line,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "Fecha del último mensaje publicado en el registro."
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Description"
+msgstr "Descripción"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_display_name
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_display_name
+#: field:sales.commission,display_name:0
+#: field:sales.commission.line,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission,state:0 selection:sales.commission.line,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_sales_commission
+#: model:ir.model,name:sales_commission_calculation.model_sales_commission_line
+msgid "Email Thread"
+msgstr "Hilo de mensajes"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_end_date
+#: field:sales.commission,end_date:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "End Date"
+msgstr "Fecha final"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission.line,state:0
+msgid "Exception"
+msgstr "Excepción"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_follower_ids
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_follower_ids
+#: field:sales.commission,message_follower_ids:0
+#: field:sales.commission.line,message_follower_ids:0
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_channel_ids
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_channel_ids
+#: field:sales.commission,message_channel_ids:0
+#: field:sales.commission.line,message_channel_ids:0
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_partner_ids
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_partner_ids
+#: field:sales.commission,message_partner_ids:0
+#: field:sales.commission.line,message_partner_ids:0
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_id
+#: field:sales.commission,id:0 field:sales.commission.line,id:0
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_line_message_unread
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_message_unread
+#: help:sales.commission,message_unread:0
+#: help:sales.commission.line,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_line_message_needaction
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_message_needaction
+#: help:sales.commission,message_needaction:0
+#: help:sales.commission.line,message_needaction:0
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_notes
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_notes
+#: field:sales.commission,notes:0 field:sales.commission.line,notes:0
+msgid "Internal Notes"
+msgstr "Notas internas"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: sales_commission_calculation
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Invoice Validate"
+msgstr "Validar Factura"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission,state:0 selection:sales.commission.line,state:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: sales_commission_calculation
+#: field:crm.team,is_apply:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_crm_team_is_apply
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_category_is_apply
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_template_is_apply
+#: field:product.category,is_apply:0 field:product.template,is_apply:0
+msgid "Is Apply ?"
+msgstr "Is Applicable?"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_is_paid
+#: field:sales.commission.line,is_paid:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Is Commision Line Paid"
+msgstr "Línea de Comisión Pagada"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_is_paid
+#: field:sales.commission,is_paid:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Is Commission Paid"
+msgstr "Comisión Pagada"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_template_is_commission_product
+#: field:product.template,is_commission_product:0
+msgid "Is Commission Product ?"
+msgstr "Es Producto de Comisión ?"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_is_follower
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_is_follower
+#: field:sales.commission,message_is_follower:0
+#: field:sales.commission.line,message_is_follower:0
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_last_post
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_last_post
+#: field:sales.commission,message_last_post:0
+#: field:sales.commission.line,message_last_post:0
+msgid "Last Message Date"
+msgstr "Fecha del último mensaje"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission___last_update
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line___last_update
+#: field:sales.commission,__last_update:0
+#: field:sales.commission.line,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_write_uid
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_write_uid
+#: field:sales.commission,write_uid:0 field:sales.commission.line,write_uid:0
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_write_date
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_write_date
+#: field:sales.commission,write_date:0 field:sales.commission.line,write_date:0
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_ids
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_ids
+#: field:sales.commission,message_ids:0
+#: field:sales.commission.line,message_ids:0
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_name
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_name
+#: field:sales.commission,name:0 field:sales.commission.line,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_needaction_counter
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_needaction_counter
+#: field:sales.commission,message_needaction_counter:0
+#: field:sales.commission.line,message_needaction_counter:0
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_line_message_needaction_counter
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_message_needaction_counter
+#: help:sales.commission,message_needaction_counter:0
+#: help:sales.commission.line,message_needaction_counter:0
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_line_message_unread_counter
+#: model:ir.model.fields,help:sales_commission_calculation.field_sales_commission_message_unread_counter
+#: help:sales.commission,message_unread_counter:0
+#: help:sales.commission.line,message_unread_counter:0
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission,state:0 selection:sales.commission.line,state:0
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_product_id
+#: selection:sale.config.settings,commission_based_on:0
+#: field:sales.commission.line,product_id:0
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_product_category
+#: selection:sale.config.settings,commission_based_on:0
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_product_template
+msgid "Product Template"
+msgstr "Plantilla producto"
+
+#. module: sales_commission_calculation
+#: field:account.invoice,sale_commission_id:0
+#: model:ir.actions.act_window,name:sales_commission_calculation.sales_commission_action
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_invoice_sale_commission_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_sales_commission_id
+#: field:sales.commission.line,sales_commission_id:0
+msgid "Sales Commission"
+msgstr "Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: field:account.payment,sales_commission_apply:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_payment_sales_commission_apply
+msgid "Sales Commission Apply"
+msgstr "Aplica Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Sales Commission Details"
+msgstr "Detalles de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Sales Commission Lines"
+msgstr "Líneas de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: model:ir.actions.act_window,name:sales_commission_calculation.sales_commission_worksheet_action
+msgid "Sales Commission Worksheet"
+msgstr "Hoja de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Sales Commission Worksheet Details"
+msgstr "Detalles de Hojas de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: model:ir.actions.report.xml,name:sales_commission_calculation.sales_commission_worksheet_report
+msgid "Sales Commission Worksheets"
+msgstr "Hojas de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: field:account.invoice,commission_manager_id:0
+#: field:account.payment,commission_manager_id:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_invoice_commission_manager_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_payment_commission_manager_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sale_order_commission_manager_id
+#: field:sale.order,commission_manager_id:0
+msgid "Sales Commission for Manager"
+msgstr "Gerente de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: field:account.invoice,commission_person_id:0
+#: field:account.payment,commission_person_id:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_invoice_commission_person_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_payment_commission_person_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sale_order_commission_person_id
+#: field:sale.order,commission_person_id:0
+msgid "Sales Commission for Member"
+msgstr "Miembro de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_menu
+#: model:ir.ui.menu,name:sales_commission_calculation.sales_commission_menu_invoice
+msgid "Sales Commissions Lines"
+msgstr "Líneas de Comisión de Ventas"
+
+#. module: sales_commission_calculation
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Sales Confirmation"
+msgstr "Confirmación de Ventas"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission.line,type:0
+msgid "Sales Manager"
+msgstr "Gerente de Ventas"
+
+#. module: sales_commission_calculation
+#: field:crm.team,sales_manager_commission:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_crm_team_sales_manager_commission
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_category_sales_manager_commission
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_template_sales_manager_commission
+#: field:product.category,sales_manager_commission:0
+#: field:product.template,sales_manager_commission:0
+msgid "Sales Manager Commission(%)"
+msgstr "Comisión de Gerente de Ventas(%)"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_commission_user_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_commission_user_id
+#: field:sales.commission,commission_user_id:0
+#: field:sales.commission.line,commission_user_id:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Sales Member"
+msgstr "Miembro de Ventas"
+
+#. module: sales_commission_calculation
+#: model:ir.model,name:sales_commission_calculation.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sales_commission_calculation
+#: selection:sales.commission.line,type:0
+msgid "Sales Person"
+msgstr "Vendedor"
+
+#. module: sales_commission_calculation
+#: field:crm.team,sales_person_commission:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_crm_team_sales_person_commission
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_category_sales_person_commission
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_product_template_sales_person_commission
+#: field:product.category,sales_person_commission:0
+#: field:product.template,sales_person_commission:0
+msgid "Sales Person Commission(%)"
+msgstr "Comisión de Vendedor(%)"
+
+#. module: sales_commission_calculation
+#: field:account.payment,sales_team_id:0
+#: model:ir.model,name:sales_commission_calculation.model_crm_team
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_payment_sales_team_id
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_sales_team_id
+#: selection:sale.config.settings,commission_based_on:0
+#: field:sales.commission.line,sales_team_id:0
+#: view:website:sales_commission_calculation.sales_commission_id
+msgid "Sales Team"
+msgstr "Equipo de ventas"
+
+#. module: sales_commission_calculation
+#: field:account.payment,sales_user_id:0
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_account_payment_sales_user_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_source_currency
+#: field:sales.commission.line,source_currency:0
+msgid "Source Currency"
+msgstr "Moneda Origen"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_origin
+#: field:sales.commission.line,origin:0
+msgid "Source Document"
+msgstr "Documento origen"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_src_invoice_id
+#: field:sales.commission.line,src_invoice_id:0
+msgid "Source Invoice"
+msgstr "Factura de Origen"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_src_payment_id
+#: field:sales.commission.line,src_payment_id:0
+msgid "Source Payment"
+msgstr "Pago de Origen"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_src_order_id
+#: field:sales.commission.line,src_order_id:0
+msgid "Source Sale Order"
+msgstr "Origen de Pedido de Venta"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_start_date
+#: field:sales.commission,start_date:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_state
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_state
+#: field:sales.commission,state:0 field:sales.commission.line,state:0
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Status"
+msgstr "Estado"
+
+#. module: sales_commission_calculation
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "Total Commision Amount"
+msgstr "Monto de Comisión Total"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_amount
+#: field:sales.commission,amount:0
+msgid "Total Commision Amount (Company Currency)"
+msgstr "Monto de Comisión Total (Moneda Local)"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_unread
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_unread
+#: field:sales.commission,message_unread:0
+#: field:sales.commission.line,message_unread:0
+msgid "Unread Messages"
+msgstr "Mensajes sin leer"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_message_unread_counter
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_message_unread_counter
+#: field:sales.commission,message_unread_counter:0
+#: field:sales.commission.line,message_unread_counter:0
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes no leídos"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sales_commission_line_type
+#: field:sales.commission.line,type:0
+#: view:website:sales_commission_calculation.sales_commission_id
+#: view:website:sales_commission_calculation.sales_commission_worksheet_id
+msgid "User Type"
+msgstr "Tipo de Usuario"
+
+#. module: sales_commission_calculation
+#: model:ir.model.fields,field_description:sales_commission_calculation.field_sale_config_settings_when_to_pay
+#: field:sale.config.settings,when_to_pay:0
+msgid "When To Pay"
+msgstr "Cuándo Pagar"
