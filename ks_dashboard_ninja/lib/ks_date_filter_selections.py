@@ -2,16 +2,17 @@
 
 from odoo.fields import datetime
 from datetime import timedelta
+import pytz
 
 
-
-def ks_get_date(ks_date_filter_selection):
+def ks_get_date(ks_date_filter_selection, self):
+    timezone = self._context.get('tz') or self.env.user.tz
     series = ks_date_filter_selection
-    return eval("ks_date_series_" + series.split("_")[0])(series.split("_")[1])
+    return eval("ks_date_series_" + series.split("_")[0])(series.split("_")[1], timezone)
 
 
 # Last Specific Days Ranges : 7, 30, 90, 365
-def ks_date_series_l(ks_date_selection):
+def ks_date_series_l(ks_date_selection, timezone):
     ks_date_data = {}
     date_filter_options = {
         'day': 0,
@@ -22,29 +23,32 @@ def ks_date_series_l(ks_date_selection):
         'past': False,
         'future': False
     }
-    ks_date_data["selected_end_date"] = datetime.strptime(datetime.now().strftime("%Y-%m-%d 23:59:59"),
+    end_time = datetime.strptime(datetime.now().strftime("%Y-%m-%d 23:59:59"),
                                                           '%Y-%m-%d %H:%M:%S')
-    ks_date_data["selected_start_date"] = datetime.strptime((datetime.now() - timedelta(
+    start_time = datetime.strptime((datetime.now() - timedelta(
         days=date_filter_options[ks_date_selection])).strftime("%Y-%m-%d 00:00:00"), '%Y-%m-%d %H:%M:%S')
+    ks_date_data["selected_end_date"] = ks_convert_into_utc(end_time, timezone)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_time, timezone)
+
     return ks_date_data
 
 
 # Current Date Ranges : Week, Month, Quarter, year
-def ks_date_series_t(ks_date_selection):
-    return eval("ks_get_date_range_from_" + ks_date_selection)("current")
+def ks_date_series_t(ks_date_selection, timezone):
+    return eval("ks_get_date_range_from_" + ks_date_selection)("current", timezone)
 
 
 # Previous Date Ranges : Week, Month, Quarter, year
-def ks_date_series_ls(ks_date_selection):
-    return eval("ks_get_date_range_from_" + ks_date_selection)("previous")
+def ks_date_series_ls(ks_date_selection, timezone):
+    return eval("ks_get_date_range_from_" + ks_date_selection)("previous", timezone)
 
 
 # Next Date Ranges : Day, Week, Month, Quarter, year
-def ks_date_series_n(ks_date_selection):
-    return eval("ks_get_date_range_from_" + ks_date_selection)("next")
+def ks_date_series_n(ks_date_selection, timezone):
+    return eval("ks_get_date_range_from_" + ks_date_selection)("next", timezone)
 
 
-def ks_get_date_range_from_day(date_state):
+def ks_get_date_range_from_day(date_state, timezone):
     ks_date_data = {}
 
     date = datetime.now()
@@ -53,13 +57,14 @@ def ks_get_date_range_from_day(date_state):
         date = date - timedelta(days=1)
     elif date_state == "next":
         date = date + timedelta(days=1)
-
-    ks_date_data["selected_start_date"] = datetime(date.year, date.month, date.day)
-    ks_date_data["selected_end_date"] = datetime(date.year, date.month, date.day) + timedelta(days=1, seconds=-1)
+    start_date = datetime(date.year, date.month, date.day)
+    end_date = datetime(date.year, date.month, date.day) + timedelta(days=1, seconds=-1)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date,timezone)
+    ks_date_data["selected_end_date"] =  ks_convert_into_utc(end_date,timezone)
     return ks_date_data
 
 
-def ks_get_date_range_from_week(date_state):
+def ks_get_date_range_from_week(date_state, timezone):
     ks_date_data = {}
 
     date = datetime.now()
@@ -72,14 +77,14 @@ def ks_get_date_range_from_week(date_state):
     date_iso = date.isocalendar()
     year = date_iso[0]
     week_no = date_iso[1]
-
-    ks_date_data["selected_start_date"] = datetime.strptime('%s-W%s-1' % (year, week_no - 1), "%Y-W%W-%w")
-    ks_date_data["selected_end_date"] = ks_date_data["selected_start_date"] + timedelta(days=6, hours=23, minutes=59,
-                                                                                        seconds=59, milliseconds=59)
+    start_date = datetime.strptime('%s-W%s-1' % (year, week_no - 1), "%Y-W%W-%w")
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date, timezone)
+    end_date = start_date + timedelta(days=6, hours=23, minutes=59, seconds=59, milliseconds=59)
+    ks_date_data["selected_end_date"] = ks_convert_into_utc(end_date, timezone)
     return ks_date_data
 
 
-def ks_get_date_range_from_month(date_state):
+def ks_get_date_range_from_month(date_state, timezone):
     ks_date_data = {}
 
     date = datetime.now()
@@ -104,13 +109,14 @@ def ks_get_date_range_from_month(date_state):
         end_month = 1
     else:
         end_month += 1
-
-    ks_date_data["selected_start_date"] = datetime(year, month, 1)
-    ks_date_data["selected_end_date"] = datetime(end_year, end_month, 1) - timedelta(seconds=1)
+    start_date = datetime(year, month, 1)
+    end_date = datetime(end_year, end_month, 1) - timedelta(seconds=1)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date, timezone)
+    ks_date_data["selected_end_date"] = ks_convert_into_utc(end_date, timezone)
     return ks_date_data
 
 
-def ks_get_date_range_from_quarter(date_state):
+def ks_get_date_range_from_quarter(date_state, timezone):
     ks_date_data = {}
 
     date = datetime.now()
@@ -128,16 +134,17 @@ def ks_get_date_range_from_quarter(date_state):
             quarter = 1
             year += 1
 
-    ks_date_data["selected_start_date"] = datetime(year, 3 * quarter - 2, 1)
+    start_date = datetime(year, 3 * quarter - 2, 1)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date, timezone)
 
     month = 3 * quarter
     remaining = int(month / 12)
-    ks_date_data["selected_end_date"] = datetime(year + remaining, month % 12 + 1, 1) - timedelta(seconds=1)
-
+    end_date = datetime(year + remaining, month % 12 + 1, 1) - timedelta(seconds=1)
+    ks_date_data["selected_end_date"] = ks_convert_into_utc(end_date, timezone)
     return ks_date_data
 
 
-def ks_get_date_range_from_year(date_state):
+def ks_get_date_range_from_year(date_state, timezone):
     ks_date_data = {}
 
     date = datetime.now()
@@ -147,48 +154,48 @@ def ks_get_date_range_from_year(date_state):
         year -= 1
     elif date_state == "next":
         year += 1
-
-    ks_date_data["selected_start_date"] = datetime(year, 1, 1)
-    ks_date_data["selected_end_date"] = datetime(year + 1, 1, 1) - timedelta(seconds=1)
-
+    start_date = datetime(year, 1, 1)
+    end_date = datetime(year + 1, 1, 1) - timedelta(seconds=1)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date, timezone)
+    ks_date_data["selected_end_date"] = ks_convert_into_utc(end_date, timezone)
     return ks_date_data
 
-
-def ks_get_date_range_from_past(date_state):
+def ks_get_date_range_from_past(date_state, self_tz):
     ks_date_data = {}
-
     date = datetime.now()
-
     ks_date_data["selected_start_date"] = False
     ks_date_data["selected_end_date"] = date
     return ks_date_data
 
 
-def ks_get_date_range_from_pastwithout(date_state):
+def ks_get_date_range_from_pastwithout(date_state, self_tz):
     ks_date_data = {}
     date = datetime.now()
     hour = date.hour + 1
-    date = date - timedelta(hours = hour)
+    date = date - timedelta(hours=hour)
     ks_date_data["selected_start_date"] = False
     ks_date_data["selected_end_date"] = date
     return ks_date_data
 
 
-def ks_get_date_range_from_future(date_state):
+def ks_get_date_range_from_future(date_state, self_tz):
     ks_date_data = {}
-
     date = datetime.now()
-
     ks_date_data["selected_start_date"] = date
     ks_date_data["selected_end_date"] = False
     return ks_date_data
 
 
-def ks_get_date_range_from_futurestarting(date_state):
+def ks_get_date_range_from_futurestarting(date_state, self_tz):
     ks_date_data = {}
     date = datetime.now()
     hour = (24 - date.hour) + 1
-    date = date + timedelta(hours = hour)
-    ks_date_data["selected_start_date"] = date
+    date = date + timedelta(hours=hour)
+    start_date = datetime(date.year, date.month, date.day)
+    ks_date_data["selected_start_date"] = ks_convert_into_utc(start_date, self_tz)
     ks_date_data["selected_end_date"] = False
     return ks_date_data
+
+def ks_convert_into_utc(datetime, timezone):
+    ks_tz = timezone and pytz.timezone(timezone) or pytz.UTC
+    return ks_tz.localize(datetime.replace(tzinfo=None), is_dst=False).astimezone(pytz.UTC).replace(tzinfo=None)

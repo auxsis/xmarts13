@@ -1,0 +1,126 @@
+
+$s-products-carousel-carousel-icon-color: theme-color('gamma') !default;
+
+#wrapwrap .s_products_carousel {
+    .fa {
+        color: $s-products-carousel-carousel-icon-color;
+        font-size: 35px;
+        transition: all 0.3s ease 0s;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        &:hover {
+            color: theme-color('beta');
+        }
+    }
+
+    .carousel-inner {
+        height: $s-products-carousel-carousel-height;
+    }
+
+    .carousel-control {
+        opacity: 1;
+        top: 205px;
+        width: 70px;
+        height: 70px;
+        text-shadow: none;
+    }
+
+    .carousel-indicators {
+        visibility: $s-products-carousel-indicators-visible;
+        bottom: $s-products-carousel-indicators-position;
+    }
+
+    .carousel-control.left, .carousel-control.right {
+        @include s-products-carousel-hook;
+        background-color: $s-products-carousel-carousel-control-color;
+        background-image: none;
+        height: 100%;
+        top: 0px;
+    }
+
+    .carousel-control.left {
+        left: 0px;
+
+        .fa-chevron-left {
+            right: 39%;
+            top: 50%;
+        }
+    }
+
+    .carousel-control.right {
+        right: 0px;
+
+        .fa-chevron-right {
+            left: 39%;
+            top: 50%;
+        }
+    }
+
+    .carousel .carousel-control.left *, .carousel .carousel-control.right * {
+        position: relative;
+        top: 19px;
+        z-index: 5;
+    }
+    .row {
+        margin: 0;
+    }
+    .container-fluid {
+        padding: 0;
+        overflow: hidden;
+
+        .product-widget {
+            position: absolute;
+            bottom: 0px;
+            text-align: center;
+
+            @media screen and (max-width: 360px) {
+                height: auto;
+            }
+        }
+
+        .widget{
+            display: inline-block;
+            overflow: hidden;
+
+            @media screen and (max-width: 360px) {
+                transform: none;
+                padding-bottom: 10px;
+            }
+
+            img {
+                max-height: 120px;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+
+        .hero-bg {
+            padding: $s-products-carousel-hero-bg-padding;
+            color: theme-color('alpha');
+            text-align: center;
+
+            @include media-breakpoint-down(sm) {
+                padding-top: 20px;
+                text-align: center;
+            }
+
+            @media screen and (max-width: 360px) {
+                padding: 0px;
+            }
+
+            h2 {
+                font-size: 85px;
+                text-shadow: 1px 1px 11px rgba(0, 0, 0, 0.86);
+
+                @include media-breakpoint-down(sm) {
+                    font-size: 65px;
+                }
+                @media screen and (max-width: 360px) {
+                    font-size: 35px;
+                }
+            }
+        }
+    }
+}

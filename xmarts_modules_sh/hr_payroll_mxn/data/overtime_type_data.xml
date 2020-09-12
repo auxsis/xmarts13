@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="overtime_type_01" model="overtime.type">
+            <field name="name">Dobles</field>
+            <field name="code">01</field>
+        </record>
+        <record id="overtime_type_02" model="overtime.type">
+            <field name="name">Triples</field>
+            <field name="code">02</field>
+        </record>
+        <record id="overtime_type_03" model="overtime.type">
+            <field name="name">Simples</field>
+            <field name="code">03</field>
+        </record>
+    </data>
+</odoo>

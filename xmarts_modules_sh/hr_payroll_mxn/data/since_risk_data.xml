@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="riesgo_puesto_rec_1" model="since.risk">
+            <field name="name">Clase I</field>
+            <field name="clave">1</field>
+            <field name="prime">0.54355</field>
+        </record>
+        <record id="riesgo_puesto_rec_2" model="since.risk">
+            <field name="name">Clase II</field>
+            <field name="clave">2</field>
+            <field name="prime">1.13065</field>
+        </record>
+        <record id="riesgo_puesto_rec_3" model="since.risk">
+            <field name="name">Clase III</field>
+            <field name="clave">3</field>
+            <field name="prime">2.5984</field>
+        </record>
+        <record id="riesgo_puesto_rec_4" model="since.risk">
+            <field name="name">Clase IV</field>
+            <field name="clave">4</field>
+            <field name="prime">4.65325</field>
+        </record>
+        <record id="riesgo_puesto_rec_5" model="since.risk">
+            <field name="name">Clase V</field>
+            <field name="clave">5</field>
+            <field name="prime">7.58875</field>
+        </record>
+    </data>
+</odoo>

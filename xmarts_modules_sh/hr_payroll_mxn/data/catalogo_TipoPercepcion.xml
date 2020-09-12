@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="SUELDO_NETO" model="hr.salary.rule">
+        <field name="name">Sueldo Neto</field>
+        <field name="sequence" eval="200"/>
+        <field name="code">NETO</field>
+        <field name="category_id" ref="NETO"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = categories.PERGRA + categories.OTROS - categories.DEDC  - categories.RET
+        </field>
+    </record>
+    <!-- SAT Standar rules -->
+    <record id="base" model="hr.salary.rule">
+        <field name="name">Sueldos</field>
+        <field name="sequence" eval="1"/>
+        <field name="code">BASE</field>
+        <field name="code_sat">001</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days)
+        </field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="AGUINALDO" model="hr.salary.rule">
+        <field name="name">Gratificacion Anual (Aguinaldo)</field>
+        <field name="sequence" eval="1"/>
+        <field name="code">AGL</field>
+        <field name="code_sat">002</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="condition_python">result = True</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = (contract.daily_wage * contract.aguinaldo / contract.days_on_year) * contract.worked_days_on_year
+        </field>
+        <field name="tax_select">python</field>
+        <field name="tax_python_compute">
+aguinaldo = (contract.daily_wage * contract.aguinaldo / contract.days_on_year) * contract.worked_days_on_year
+result =  (aguinaldo - 30 * smgvdf) if aguinaldo > (30 * smgvdf) else 0
+        </field>
+    </record>
+    <record id="reparto_de_utlidades" model="hr.salary.rule">
+        <field name="name">Participacion de los Trabajadores en las Utilidades PTU</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">REPAUTIL</field>
+        <field name="code_sat">003</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.rep_utilidades and contract.rep_utilidades > 0.00</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = contract.rep_utilidades</field>
+    </record>
+    <record id="reebolso_gastos_medicos" model="hr.salary.rule">
+        <field name="name">Reembolso de Gastos Medicos Dentales y Hospitalarios</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">REMGM</field>
+        <field name="code_sat">004</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="fondo_ahorro" model="hr.salary.rule">
+        <field name="name">Fondo de ahorro</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">FAHORRO</field>
+        <field name="code_sat">005</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="caja_de_ahorro" model="hr.salary.rule">
+        <field name="name">Caja de ahorro</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">CAHORRO</field>
+        <field name="code_sat">006</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="contribuciones_a_cargo_del_trabajador_pagadas_por_el_patron" model="hr.salary.rule">
+        <field name="name">Contribuciones a Cargo del Trabajador Pagadas por el Patron</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">CCTPP</field>
+        <field name="code_sat">009</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="premio_puntualidad" model="hr.salary.rule">
+        <field name="code">PPUNTUAL</field>
+        <field name="code_sat">010</field>
+        <field name="name">Premios por puntualidad</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="prima_de_seguro_de_vida" model="hr.salary.rule">
+        <field name="name">Prima de Seguro de vida</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">PSEGUROVIDA</field>
+        <field name="code_sat">011</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="seguro_de_gastos_medicos_mayores" model="hr.salary.rule">
+        <field name="name">Seguro de Gastos Médicos Mayores</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">012</field>
+        <field name="code_sat">012</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="cuotas_sindicales_pagadas_por_el_patron" model="hr.salary.rule">
+        <field name="name">Cuotas Sindicales Pagadas por el Patron</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">CS</field>
+        <field name="code_sat">013</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="subsidios_por_incapacidad" model="hr.salary.rule">
+        <field name="name">Subsidios por incapacidad</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">014</field>
+        <field name="code_sat">014</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="becas_para_trabajadores_hijos" model="hr.salary.rule">
+        <field name="name">Becas para trabajadores y/o hijos</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">015</field>
+        <field name="code_sat">015</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="horas_extra_doble" model="hr.salary.rule">
+        <field name="name">Horas extras Dobles</field>
+        <field name="sequence" eval="15"/>
+        <field name="code">HOED</field>
+        <field name="code_sat">019</field>
+        <field name="overtime_type_id" ref="hr_payroll_mxn.overtime_type_01"/>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = worked_days.HOED and worked_days.HOED.number_of_days or worked_days.HOED and worked_days.HOED.number_of_hours
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.HOED.number_of_hours * contract.hourly_wage * 2
+        </field>
+        <field name="tax_select">python</field>
+        <field name="tax_python_compute">
+result = 0
+# Las horas que están excentas de ISR son únicamente las 9 primeras
+if worked_days.HOED.number_of_hours &gt; 0:
+    amount = worked_days.HOED.number_of_hours if worked_days.HOED.number_of_hours &lt;= 9 else 9
+    result = contract.hourly_wage * 2 * amount
+# Si el empleado gana más de un salario mínimo solo está excento
+# el 50% de las horas extras del pago de ISR
+if contract.hourly_wage &gt; smgvdf / 8:
+    result = result * 0.5
+# El valor máximo de las horas extras excento de isr es de 5
+# salarios
+if result &gt; smgvdf * 5:
+    result = smgvdf * 5
+        </field>
+    </record>
+    <record id="horas_extra_triple" model="hr.salary.rule">
+        <field name="name">Horas extras Triples</field>
+        <field name="sequence" eval="15"/>
+        <field name="code">HOET</field>
+        <field name="code_sat">019</field>
+        <field name="overtime_type_id" ref="hr_payroll_mxn.overtime_type_02"/>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">
+result = worked_days.HOET and worked_days.HOET.number_of_days or worked_days.HOET and worked_days.HOET.number_of_hours
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+result = worked_days.HOET.number_of_hours * contract.hourly_wage * 3
+        </field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="prima_dominical" model="hr.salary.rule">
+        <field name="name">Prima dominical</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">PRIMDOM</field>
+        <field name="code_sat">020</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.domingos_trabaj and contract.domingos_trabaj > 0</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = contract.domingos_trabaj * contract.wage * 0.25</field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="prima_vacacional" model="hr.salary.rule">
+        <field name="name">Prima vacacional</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">PRIMVAC</field>
+        <field name="code_sat">021</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.dar_vac_fl and contract.wage and contract.wage > 0.00 and contract.vacaciones and contract.vacaciones > 0.00 and contract.vac_dias and contract.vac_dias > 0.00 and contract.prima_v and contract.prima_v > 0.00</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = contract.wage * contract.vac_dias * contract.prima_v</field>
+   </record>
+    <record id="prima_antiguedad" model="hr.salary.rule">
+        <field name="name">Prima por antiguedad</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">PRIMANT</field>
+        <field name="code_sat">022</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="pagos_por_separacion" model="hr.salary.rule">
+        <field name="name">Pagos por separacion</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">023</field>
+        <field name="code_sat">023</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="seguro_de_retiro" model="hr.salary.rule">
+        <field name="name">Seguro de retiro</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">024</field>
+        <field name="code_sat">024</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="Indemnizaciones" model="hr.salary.rule">
+        <field name="name">Indemnizaciones</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">INDEMP</field>
+        <field name="code_sat">025</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="reembolso_por_funeral" model="hr.salary.rule">
+        <field name="name">Reembolso por funeral</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">026</field>
+        <field name="code_sat">026</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="cuotas_de_seguridad_social_pagadas_por_el_patron" model="hr.salary.rule">
+        <field name="name">Cuotas de seguridad social pagadas por el patron</field>
+        <field name="sequence" eval="160"/>
+        <field name="code">CSSPP</field>
+        <field name="code_sat">027</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = rules.SSE</field>
+    </record>
+    <record id="comisiones" model="hr.salary.rule">
+        <field name="name">Comisiones</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">COM</field>
+        <field name="code_sat">028</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.comisiones and contract.comisiones > 0.00</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">if contract.comisiones_fl: result = (categories.BASE * contract.comisiones) / 100
+else: result = contract.comisiones</field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="vales_de_despensa" model="hr.salary.rule">
+        <field name="name">Vales de despensa</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">DESPP</field>
+        <field name="code_sat">029</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = contract.despensa_perc and contract.despensa_perc > 0.00</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = (categories.BASE * contract.despensa_perc) / 100</field>
+    </record>
+    <record id="vales_de_restaurante" model="hr.salary.rule">
+        <field name="name">Vales de restaurante</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">030</field>
+        <field name="code_sat">030</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="vales_de_gasolina" model="hr.salary.rule">
+        <field name="name">Vales de gasolina</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">VALGAS</field>
+        <field name="code_sat">031</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="vales_de_ropa" model="hr.salary.rule">
+        <field name="name">Vales de ropa</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">032</field>
+        <field name="code_sat">032</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="ayuda_para_renta" model="hr.salary.rule">
+        <field name="name">Ayuda para renta</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">033</field>
+        <field name="code_sat">033</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="ayuda_articulos_escolares" model="hr.salary.rule">
+        <field name="name">Ayuda para articulos escolares</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">034</field>
+        <field name="code_sat">034</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="ayuda_para_anteojos" model="hr.salary.rule">
+        <field name="name">Ayuda para anteojos</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">035</field>
+        <field name="code_sat">035</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="ayuda_para_transporte" model="hr.salary.rule">
+        <field name="name">Ayuda para transporte</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">036</field>
+        <field name="code_sat">036</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="ayuda_para_gastos_de_funeral" model="hr.salary.rule">
+        <field name="name">Ayuda para gastos de funeral</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">037</field>
+        <field name="code_sat">037</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">none</field>
+    </record>
+    <record id="otros_ingresos_por_salarios" model="hr.salary.rule">
+        <field name="name">Otros ingresos por salarios</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">038</field>
+        <field name="code_sat">038</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="jubilaciones_pensiones_haberes_retiro" model="hr.salary.rule">
+        <field name="name">Jubilaciones</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">039</field>
+        <field name="code_sat">039</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="jubilaciones" model="hr.salary.rule">
+        <field name="name">Jubilaciones, pensiones o haberes de retiro en parcialidades</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">044</field>
+        <field name="code_sat">044</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="ingreso_en_acciones" model="hr.salary.rule">
+        <field name="name">Ingresos en acciones o titulos valor que representan bienes</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">045</field>
+        <field name="code_sat">045</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="ingreso_asimilados" model="hr.salary.rule">
+        <field name="name">Ingresos asimilados a salarios</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">ASM</field>
+        <field name="code_sat">046</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="alimentacion" model="hr.salary.rule">
+        <field name="name">Alimentación</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">ALM</field>
+        <field name="code_sat">047</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="habitacion" model="hr.salary.rule">
+        <field name="name">Habitación</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">HAB</field>
+        <field name="code_sat">048</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+    </record>
+    <record id="premios_asistencia" model="hr.salary.rule">
+        <field name="name">Premios por asistencia</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">PREMIO</field>
+        <field name="code_sat">049</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">result = 0.00 </field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="vacaciones_parte_proporcional" model="hr.salary.rule">
+        <field name="name">Vacaciones (Parte Proporcional)</field>
+        <field name="sequence" eval="5"/>
+        <field name="code">VACPP</field>
+        <field name="code_sat">021</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">
+result = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days) * contract.vacaciones / 365
+        </field>
+        <field name="tax_select">always</field>
+    </record>
+    <record id="prima_vacacional_proporcional" model="hr.salary.rule">
+        <field name="name">Prima Vacacional (Parte Proporcional)</field>
+        <field name="sequence" eval="5"/>
+        <field name="code">PVPP</field>
+        <field name="code_sat">021</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">
+result = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days) * contract.vacaciones * contract.prima_v / 365
+        </field>
+        <field name="tax_select">python</field>
+        <field name="tax_python_compute">
+prima = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days) * contract.vacaciones * contract.prima_v / 365
+result =  (prima - 15 * smgvdf) if prima > (15 * smgvdf) else 0
+        </field>
+    </record>
+    <record id="aguinaldo_parte_proporcional" model="hr.salary.rule">
+        <field name="name">Aguinaldo (Parte Proporcional)</field>
+        <field name="sequence" eval="5"/>
+        <field name="code">AGLPP</field>
+        <field name="code_sat">002</field>
+        <field name="category_id" ref="PERCEPCIONES"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="quantity">1.0</field>
+        <field name="amount_python_compute">
+result = (worked_days.WORK100 and worked_days.WORK100.number_of_days) * (contract.daily_wage * contract.aguinaldo) / 365
+        </field>
+        <field name="tax_select">python</field>
+        <field name="tax_python_compute">
+aguinaldo = (worked_days.WORK100 and worked_days.WORK100.number_of_days) * (contract.daily_wage * contract.aguinaldo) / 365
+result =  (aguinaldo - 30 * smgvdf) if aguinaldo > (30 * smgvdf) else 0
+        </field>
+    </record>
+</odoo>

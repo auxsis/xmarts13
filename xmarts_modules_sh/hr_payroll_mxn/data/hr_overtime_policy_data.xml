@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_overtime_policy" model="hr.overtime.policy">
+            <field name="name">Mexican Overtime</field>
+            <field name="date">2015-01-01</field>
+        </record>
+
+        <record id="hr_overtime_policy_doubles" model="hr.overtime.policy.line">
+            <field name="name">Horas Extras Dobles</field>
+            <field name="code">HOED</field>
+            <field name="policy_id" ref="hr_overtime_policy"/>
+            <field name="rate">2</field>
+        </record>
+        <record id="hr_overtime_policy_triples" model="hr.overtime.policy.line">
+            <field name="name">Horas Extras Triples</field>
+            <field name="code">HOET</field>
+            <field name="policy_id" ref="hr_overtime_policy"/>
+            <field name="rate">3</field>
+        </record>
+
+    </data>
+</odoo>

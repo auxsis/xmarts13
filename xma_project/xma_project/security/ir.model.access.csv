@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+xmarts,XMARTS Subscription,model_xmarts_subscription,,1,1,1,1
+xmarts_server,XMARTS Server,model_xmarts_server,,1,1,1,1
+odoo_order,Odoo Order,model_odoo_order,,1,1,1,1

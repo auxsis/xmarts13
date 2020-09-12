@@ -9,6 +9,17 @@
     display: flex;
     align-items: center;
 }
+@media (max-width: 475px){
+    .ks_dashboard_link{
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column !important;
+        margin-right: auto !important;
+    }
+}
+
 .ks_date_apply_clear_print,.ks_dashboard_top_menu{
     display: flex;
     align-items: center;
@@ -26,9 +37,6 @@ i.ks-options-plus {
 
 .apply-dashboard-date-filter{
     margin-left: 10px;
-}
-.ks_btn_middle_child{
-    margin-right: 10px;
 }
 
 .clear-dashboard-date-filter{
@@ -83,4 +91,3 @@ i.ks-options-plus {
 .ks_event_offer_list:focus {
     box-shadow: none;
 }
-

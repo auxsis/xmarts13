@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view-->
+    <record id="project_form_inherit" model="ir.ui.view">
+        <field name="name">project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page" position="after">
+                <page name="resume" string="Resume">
+                    <group>
+                        <group>
+                            <field name="xmasubscription_id"/>
+                            <field name="module_ids" widget="many2many_tags"/>
+                            <field name="develop_modules"/>
+                            <field name="thirdpart_modules"/>
+                            <field name="reports"></field>
+                            <field name="user_number"></field>
+                        </group>
+                        <group>
+                            <field name="metodology"></field>
+                            <field name="consultant_hours"></field>
+                            <field name="develop_hours"></field>
+                            <field name="companies"></field>
+                            <field name="description"></field>
+                            <field name="partner_id"></field>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ordinary_payslip" model="hr.payslip.type">
+            <field name="name">Ordinary Payslip</field>
+            <field name="code">O</field>
+            <field name="default" eval="1"/>
+        </record>
+
+        <record id="extraordinary_payslip" model="hr.payslip.type">
+            <field name="name">Extrarordinary payslip</field>
+            <field name="code">E</field>
+            <field name="default" eval="0"/>
+        </record>
+
+    </data>
+</odoo>

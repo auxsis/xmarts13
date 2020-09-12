@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employeer_vacations" model="hr.salary.rule">
+            <field name="name">Vacations</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">91</field>
+            <field name="category_id" ref="obligaciones"/>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+try:
+    result = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days) * contract.vacaciones * contract.prima_v / 365
+except:
+    result = 0
+            </field>
+        </record>
+
+        <record id="employeer_aguinaldo" model="hr.salary.rule">
+            <field name="name">Employeer Aguinaldo Provision</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">92</field>
+            <field name="category_id" ref="obligaciones"/>
+            <field name="condition_select">none</field>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+try:
+    result = contract.daily_wage * (worked_days.WORK100 and worked_days.WORK100.number_of_days) * contract.aguinaldo / 365
+except:
+    result = 0
+            </field>
+        </record>
+
+        <record id="employeer_infonavit" model="hr.salary.rule">
+            <field name="name">IMSS Employeer Provision</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">IMSSEP</field>
+            <field name="code_sat">001</field>
+            <field name="category_id" ref="obligaciones"/>
+            <field name="appears_on_payslip" eval="False"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+try:
+    result = payslip._get_imss(fee_name='c_patronal')
+except:
+    payslip = payslip.dict
+    result = payslip._get_imss(fee_name='c_patronal')
+            </field>
+        </record>
+
+    </data>
+</odoo>

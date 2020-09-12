@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Categorias -->
+        <record id="base_mx" model="hr.salary.rule.category">
+            <field name="name">BASE</field>
+            <field name="code">BASE</field>
+        </record>
+        <record id="PERCEPCIONES" model="hr.salary.rule.category">
+            <field name="name">Percepciones</field>
+            <field name="code">PERGRA</field>
+        </record>
+        <record id="DEDUCCIONES" model="hr.salary.rule.category">
+            <field name="name">Deducciones</field>
+            <field name="code">DEDC</field>
+        </record>
+        <record id="retenciones" model="hr.salary.rule.category">
+            <field name="name">Retenciones</field>
+            <field name="code">RET</field>
+        </record>
+        <record id="obligaciones" model="hr.salary.rule.category">
+            <field name="name">Obligaciones</field>
+            <field name="code">OBL</field>
+        </record>
+        <record id="category_otros" model="hr.salary.rule.category">
+            <field name="name">Otros Pagos</field>
+            <field name="code">OTROS</field>
+        </record>
+        <record id="NETO" model="hr.salary.rule.category">
+            <field name="name">Neto</field>
+            <field name="code">NETO</field>
+        </record>
+
+    </data>
+</odoo>

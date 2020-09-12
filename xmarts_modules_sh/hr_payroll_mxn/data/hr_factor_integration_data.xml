@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Diario -->
+        <record id="factor_table_year1" model="factor.integration.imss">
+            <field name="yearsworking">1</field>
+            <field name="holidays">6</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">1.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0041</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0452</field>
+        </record>
+
+        <record id="factor_table_year2" model="factor.integration.imss">
+            <field name="yearsworking">2</field>
+            <field name="holidays">8</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">2.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0055</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0466</field>
+        </record>
+
+        <record id="factor_table_year3" model="factor.integration.imss">
+            <field name="yearsworking">3</field>
+            <field name="holidays">10</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">2.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0068</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0479</field>
+        </record>
+
+        <record id="factor_table_year4" model="factor.integration.imss">
+            <field name="yearsworking">4</field>
+            <field name="holidays">12</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0082</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0493</field>
+        </record>
+
+        <record id="factor_table_year5" model="factor.integration.imss">
+            <field name="yearsworking">5</field>
+            <field name="holidays">14</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0096</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0507</field>
+        </record>
+
+        <record id="factor_table_year6" model="factor.integration.imss">
+            <field name="yearsworking">6</field>
+            <field name="holidays">14</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0096</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0507</field>
+        </record>
+
+        <record id="factor_table_year7" model="factor.integration.imss">
+            <field name="yearsworking">7</field>
+            <field name="holidays">14</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0096</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0507</field>
+        </record>
+
+        <record id="factor_table_year8" model="factor.integration.imss">
+            <field name="yearsworking">8</field>
+            <field name="holidays">14</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0096</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0507</field>
+        </record>
+
+        <record id="factor_table_year9" model="factor.integration.imss">
+            <field name="yearsworking">9</field>
+            <field name="holidays">14</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">3.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0096</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0507</field>
+        </record>
+
+        <record id="factor_table_year10" model="factor.integration.imss">
+            <field name="yearsworking">10</field>
+            <field name="holidays">16</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0110</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0521</field>
+        </record>
+
+        <record id="factor_table_year11" model="factor.integration.imss">
+            <field name="yearsworking">11</field>
+            <field name="holidays">16</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0110</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0521</field>
+        </record>
+
+        <record id="factor_table_year12" model="factor.integration.imss">
+            <field name="yearsworking">12</field>
+            <field name="holidays">16</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0110</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0521</field>
+        </record>
+
+        <record id="factor_table_year13" model="factor.integration.imss">
+            <field name="yearsworking">13</field>
+            <field name="holidays">16</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0110</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0521</field>
+        </record>
+
+        <record id="factor_table_year14" model="factor.integration.imss">
+            <field name="yearsworking">14</field>
+            <field name="holidays">16</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0110</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0521</field>
+        </record>
+
+        <record id="factor_table_year15" model="factor.integration.imss">
+            <field name="yearsworking">15</field>
+            <field name="holidays">18</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0123</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0534</field>
+        </record>
+
+        <record id="factor_table_year16" model="factor.integration.imss">
+            <field name="yearsworking">16</field>
+            <field name="holidays">18</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0123</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0534</field>
+        </record>
+
+        <record id="factor_table_year17" model="factor.integration.imss">
+            <field name="yearsworking">17</field>
+            <field name="holidays">18</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0123</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0534</field>
+        </record>
+
+        <record id="factor_table_year18" model="factor.integration.imss">
+            <field name="yearsworking">18</field>
+            <field name="holidays">18</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0123</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0534</field>
+        </record>
+
+        <record id="factor_table_year19" model="factor.integration.imss">
+            <field name="yearsworking">19</field>
+            <field name="holidays">18</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">4.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0123</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0534</field>
+        </record>
+
+        <record id="factor_table_year20" model="factor.integration.imss">
+            <field name="yearsworking">20</field>
+            <field name="holidays">20</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0137</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0548</field>
+        </record>
+
+        <record id="factor_table_year21" model="factor.integration.imss">
+            <field name="yearsworking">21</field>
+            <field name="holidays">20</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0137</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0548</field>
+        </record>
+
+        <record id="factor_table_year22" model="factor.integration.imss">
+            <field name="yearsworking">22</field>
+            <field name="holidays">20</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0137</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0548</field>
+        </record>
+
+        <record id="factor_table_year23" model="factor.integration.imss">
+            <field name="yearsworking">23</field>
+            <field name="holidays">20</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0137</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0548</field>
+        </record>
+
+        <record id="factor_table_year24" model="factor.integration.imss">
+            <field name="yearsworking">24</field>
+            <field name="holidays">20</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.0</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0137</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0548</field>
+        </record>
+
+        <record id="factor_table_year25" model="factor.integration.imss">
+            <field name="yearsworking">25</field>
+            <field name="holidays">22</field>
+            <field name="vacation">0.25</field>
+            <field name="porcentaje">5.5</field>
+            <field name="day_years">365</field>
+            <field name="factor_vacation">0.0151</field>
+            <field name="aguinaldo">15</field>
+            <field name="factor">0.0411</field>
+            <field name="factor_integration">1.0562</field>
+        </record>
+
+    </data>
+</odoo>

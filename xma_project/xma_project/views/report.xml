@@ -1,0 +1,131 @@
+<odoo>
+    <data>
+        <report
+            id="project_resume"
+            model="project.project"
+            string="Project Resume"
+            report_type="qweb-pdf"
+            name="xma_project.project_resume_template"
+        />
+        <template id="project_resume_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="header">
+                        </div>
+                        <div class="page">
+                            <h1 style="size-font:large;text-align:center;padding:15px;margin:10px;"><b>Resumen de Proyecto</b></h1>
+                            <table style="width:100%;">
+                                <tr>
+                                    <td style="width:60%;text-align:left;"><label><b>Cliente: </b></label> <span t-field="o.xmasubscription_id.partner_id"></span></td>
+                                    <td style="width:40%;text-align:left;"><label><b>Fecha: </b></label> <span t-field="o.xmasubscription_id.date_start" ></span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="width:60%;text-align:left;"><label style="text-align:right;"><b>Version: </b></label> <span t-field="o.partner_id.name"></span></td>
+                                </tr>
+
+                            </table>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td style="background-color:#a54e79; font-size:x-large; color:#ffffff; text-align: center; width: 100%;">Alcance de Implementación</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#a54e79; color:#ffffff; font-size:large; text-align: center; width: 100%;">Descripción</td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered" style="margin-top:-17px;font-size:medium;">
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right; width:250px; vertical-align: middle;">Logo</td>
+                                    <td style="text-align:center;"><img t-if="o.xmasubscription_id.logo" t-att-src="image_data_uri(o.xmasubscription_id.logo)"></img></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Descripción del Cliente</td>
+                                    <td><span t-field="o.xmasubscription_id.description"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Modulós Nativos</td>
+                                    <td><span t-field="o.modules_ids"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Modulós a Desarrollar</td>
+                                    <td><span t-field="o.develop_modules"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Modulós Adicionales (3eros)</td>
+                                    <td><span t-field="o.thirdpart_modules"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Reportes Personales Autorizados</td>
+                                    <td><span t-field="o.reports"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Tiempo estimado de Implementación</td>
+                                    <td><span t-field="o.develop_hours"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Numero de Usuarios</td>
+                                    <td><span t-field="o.xmasubscription_id.users"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Enterprise u OpenSource</td>
+                                    <td><span t-field="o.xmasubscription_id.code"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Servidor</td>
+                                    <td><span t-field="o.xmasubscription_id.server_id"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Tipo de Implementación</td>
+                                    <td><span t-field="o.metodology"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Horas Consultoria</td>
+                                    <td><span t-field="o.consultant_hours"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Horas Desarrollo</td>
+                                    <td><span t-field="o.develop_hours"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Empresas a Implementar</td>
+                                    <td><span t-field="o.companies"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#999999; color:#ffffff; text-align: right;">Observaciones</td>
+                                    <td><span t-field="o.description"></span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered" style="width:80%;margin-top:30px;font-size:small;">
+                                <tr>
+                                    <td style="background-color:#a54e79; color:#ffffff; font-weight:bold; text-align: left; width:250px; vertical-align: middle; heigth">Lider del proyecto cliente</td>
+                                    <td style="text-align:left;"><span t-field="o.xmasubscription_id.account_manager_id.name"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#a54e79; color:#ffffff;font-weight:bold;text-align: left;">Telefono</td>
+                                    <td style="text-align:right;"><span t-field="o.xmasubscription_id.account_manager_id.phone"></span></td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#a54e79; color:#ffffff;font-weight: bold;text-align: left;margin-top:0px;margin-bottom:0px;">E-mail</td>
+                                    <td style="text-align:left;"><span t-field="o.xmasubscription_id.account_manager_id.email"></span></td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered" style="margin-left:250px; margin-top:50px; width:70%;">
+                                <tr>
+                                    <td style="width:40%;"><b>Comercial Asignado:</b></td>
+                                    <td style="width:60%;"><span></span></td>
+                                </tr>
+                            </table>
+                            <div style="margin-top:150px;width:100%;text-align:center;">
+                                <div style="border-bottom: 1px solid gray; width:50%; margin-left:25%;"></div>
+                                <label style="text-align:center;">Firma del cliente</label>
+                            </div>
+                        </div>
+                        <div class="footer">
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

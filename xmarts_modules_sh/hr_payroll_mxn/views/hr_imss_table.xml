@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="imss_table_form" model="ir.ui.view">
+            <field name="name">imss.tables.form</field>
+            <field name="model">imss.table</field>
+            <field name="arch" type="xml">
+                <form string="IMSS">
+                    <sheet string="IMSS">
+                        <group>
+                            <field name="name" />
+                            <field name="c_patronal" />
+                            <field name="c_obrera" />
+                            <field name="c_total" />
+                            <field name="base" />
+                            <field name="description" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="imss_table_tree" model="ir.ui.view">
+            <field name="name">imss.table.tree</field>
+            <field name="model">imss.table</field>
+            <field name='arch' type='xml'>
+                <tree string="IMSS">
+                    <field name="name" />
+                    <field name="c_patronal" />
+                    <field name="c_obrera" />
+                    <field name="c_total" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_imss_table" model="ir.actions.act_window">
+            <field name="name">IMSS</field>
+            <field name="res_model">imss.table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="l10n_mx_payroll_main" parent="hr_payroll.menu_hr_payroll_root" name="Nómina Mexicana"/>
+        <menuitem action="action_imss_table" id="menu_imss_table" parent="l10n_mx_payroll_main" />
+
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Estructura Salarial Base -->
+        <record id="structure_base_isr_imss" model="hr.payroll.structure">
+            <field name="code">BASE</field>
+            <field name="name">Sueldos y Salarios (ISR-IMSS)</field>
+            <field eval="[(6, 0, [
+                ref('base'),
+                ref('horas_extra_doble'),
+                ref('horas_extra_triple'),
+                ref('imss'),
+                ref('isr'),
+                ref('ISRSUB_EMP'),
+                ref('infonavit_loan'),
+                ref('employeer_vacations'),
+                ref('employeer_aguinaldo'),
+                ref('employeer_infonavit'),
+                ref('SUELDO_NETO')
+                ])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" eval=""/>
+        </record>
+
+        <!-- Estructura Salarial Para Aguinaldos -->
+        <record id="structure_aguinaldos" model="hr.payroll.structure">
+            <field name="code">AGL</field>
+            <field name="name">Pago de Aguinaldos</field>
+            <field eval="[(6, 0, [
+                ref('AGUINALDO'),
+                ref('isr_aguinaldo'),
+                ref('SUELDO_NETO')
+                ])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" eval=""/>
+            <field name="payslip_type_id" ref="ordinary_payslip"/>
+        </record>
+
+        <!-- Estructuras Salariales para Finiquitos y Liquidaciones -->
+        <record id="structure_finiquito_03" model="hr.payroll.structure">
+            <field name="code">FIN03</field>
+            <field name="name">Finiquito por el vencimiento del término, la terminación de la obra y la terminación del capital invertido</field>
+            <field eval="[(6, 0, [
+                ref('aguinaldo_parte_proporcional'),
+                ref('prima_vacacional_proporcional'),
+                ref('vacaciones_parte_proporcional'),
+                ref('isr_mes'),
+                ref('SUELDO_NETO')
+                ])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="parent_id" eval=""/>
+            <field name="payslip_type_id" ref="extraordinary_payslip"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view -->
+    <record id="xma_subscription_form_view" model="ir.ui.view">
+        <field name="name">xmarts.subscription.form.view</field>
+        <field name="model">xmarts.subscription</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="stage_id" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="flex-fill d-flex flex-row">
+                            <field name="name" class="text-truncate"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="partner_id"/>
+                            <field name="logo"/>
+                            <field name="date_start"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="initial_users"/>
+                            <field name="server_id"/>
+                        </group>
+                        <group>
+                            <field name="template_id"/>
+                            <field name="subscription_id"/>
+                            <field name="description"/>
+                            <field name="success_history"/>
+                            <field name="account_manager_id"/>
+                            <field name="users"/>
+                            <field name="workers"/>
+                            <field name="gigas"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="xma_subscription_tree_view" model="ir.ui.view">
+        <field name="name">xmarts.subscription.tree.view</field>
+        <field name="model">xmarts.subscription</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="partner_id"/>
+                <field name="users"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="xma_subscription_action" model="ir.actions.act_window">
+        <field name="name">xmarts.subscription.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">xmarts.subscription</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="configuration"
+            parent="sale_subscription.menu_sale_subscription_root"
+            name="Configure"/>
+
+    <menuitem
+            id="menu_subscription_odoo"
+            parent="configuration"
+            action="xma_subscription_action"
+            name="Subscription Odoo"/>
+
+</odoo>

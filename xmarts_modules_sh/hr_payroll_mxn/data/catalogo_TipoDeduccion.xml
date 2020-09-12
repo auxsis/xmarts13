@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="imss" model="hr.salary.rule">
+            <field name="name">Seguridad Social</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">SSE</field>
+            <field name="code_sat">001</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+try:
+    result = payslip._get_imss()
+except:
+    payslip = payslip.dict
+    result = payslip._get_imss()
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+try:
+    result = payslip._get_imss()
+except:
+    payslip = payslip.dict
+    result = payslip._get_imss()
+            </field>
+        </record>
+        <record id="isr" model="hr.salary.rule">
+            <field name="name">ISR Ordinario</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">ISR</field>
+            <field name="code_sat">002</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+base = categories.PERGRA
+isr_table = payslip.env['isr.table']
+isr_values = isr_table.search(
+    [('type_id', '=', contract.isr_table.id), ('limite_min', '&lt;=', base)],
+    limit=1, order='limite_min desc',
+)
+new_base = base - isr_values.limite_min
+result = (new_base * isr_values.excedente) + isr_values.cuota_fija
+            </field>
+        </record>
+        <record id="isr_aguinaldo" model="hr.salary.rule">
+            <field name="name">ISR de Aguinaldo</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">ISR</field>
+            <field name="code_sat">002</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+# Retención aplicando las tablas y tarifas del artículo 96 y Subsidio para el empleo de la LISR
+base = categories.PERGRA
+
+# Calculo de ingresos ordinarios del periodo
+base_ord = contract.daily_wage * 30.4
+base_tot = base + base_ord
+
+# Calculo de ISR total se debe ocupar la tabla mensual
+month_table = payslip.env.ref('hr_payroll_mxn.isr_table_type_30')
+isr_table = payslip.env['isr.table']
+isr_values = isr_table.search(
+    [('type_id', '=', month_table.id), ('limite_min', '&lt;=', base_tot)],
+    limit=1, order='limite_min desc',
+)
+new_base = base_tot - isr_values.limite_min
+# ISR sobre el total de ingresos del mes
+isr_total = new_base * isr_values.excedente + isr_values.cuota_fija
+
+# Calculo del subcidio al empleo
+subcidio_obj = payslip.env['isr.subcidio.table']
+subcidio_values = subcidio_obj.search(
+    [('type_id', '=', month_table.id), ('limite_min', '&lt;=', base_tot)],
+    limit=1, order='limite_min desc',
+)
+isr_total = isr_total - subcidio_values.subcidio
+
+# Calculo de ISR de ingresos ordinarios
+isr_ord_values = isr_table.search(
+    [('type_id', '=', month_table.id), ('limite_min', '&lt;=', base_ord)],
+    limit=1, order='limite_min desc',
+)
+new_base_ord = base_ord - isr_ord_values.limite_min
+# ISR de los ingresos ordinarios del mes
+isr_ord = new_base_ord * isr_ord_values.excedente + isr_ord_values.cuota_fija
+
+# ISR a cargo del aguinaldo con base en el artículo 96 de la LISR
+result = isr_total - isr_ord
+if result &lt; 0:
+    result = 0
+            </field>
+        </record>
+        <record id="isr_mes" model="hr.salary.rule">
+            <field name="name">ISR</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">ISRMES</field>
+            <field name="code_sat">002</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+# Retención aplicando las tablas y tarifas del artículo 96
+base = categories.PERGRA
+
+# Calculo de ISR total ocupando la tabla mensual
+month_table = payslip.env.ref('hr_payroll_mxn.isr_table_type_30')
+isr_table = payslip.env['isr.table']
+isr_values = isr_table.search(
+    [('type_id', '=', month_table.id), ('limite_min', '&lt;=', base)],
+    limit=1, order='limite_min desc',
+)
+new_base = base - isr_values.limite_min
+
+# ISR sobre el total de ingresos del mes
+result = new_base * isr_values.excedente + isr_values.cuota_fija
+            </field>
+        </record>
+        <record id="late_arrives" model="hr.salary.rule">
+            <field name="name">Descuentos Retardos (Horas)</field>
+            <field name="sequence" eval="1"/>
+            <field name="code">LATE</field>
+            <field name="code_sat">001</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.LATE and worked_days.LATE.number_of_days > 0
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.LATE.number_of_hours * contract.hourly_wage
+            </field>
+        </record>
+        <record id="sar_voluntario" model="hr.salary.rule">
+            <field name="name">Aportaciones a retiro, cesantia en edad avanzada y vejez.</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">SARV</field>
+            <field name="code_sat">003</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.sar_voluntario and contract.sar_voluntario > 0.00</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.sar_voluntario</field>
+        </record>
+        <record id="otros_deducciones" model="hr.salary.rule">
+            <field name="name">Otros</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">004</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="aportaciones_fondo_vivienda" model="hr.salary.rule">
+            <field name="name">Aportaciones a Fondo de vivienda</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">005</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="descuento_incapacidad " model="hr.salary.rule">
+            <field name="name">Descuento por incapacidad </field>
+            <field name="sequence" eval="150"/>
+            <field name="code">006</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="pension_alimenticia" model="hr.salary.rule">
+            <field name="name">Pension alimenticia</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">007</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="renta" model="hr.salary.rule">
+            <field name="name">Renta</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">008</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="infonavit_loan" model="hr.salary.rule">
+            <field name="name">Pago por crédito de vivienda</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">PINFONAVIT</field>
+            <field name="code_sat">010</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = employee.infonavit_loan_type != 'none'
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = contract.infonavit_loan_amount * (worked_days.WORK100 and worked_days.WORK100.number_of_days)
+            </field>
+        </record>
+        <record id="fonacot" model="hr.salary.rule">
+            <field name="name">Pago de abonos INFONACOT</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">CF</field>
+            <field name="code_sat">011</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.credito_fonacot and contract.credito_fonacot > 0.00</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if not contract.credito_fonacot_porcent: result = contract.credito_fonacot
+else: result = (categories.BASE * contract.credito_fonacot) / 100</field>
+        </record>
+        <record id="anticipo_nomina" model="hr.salary.rule">
+            <field name="name">Anticipo de salarios</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">PRESTP</field>
+            <field name="code_sat">012</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.anticipo_nomina and contract.anticipo_nomina > 0.00 and not contract.prestamo</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.anticipo_nomina</field>
+        </record>
+        <record id="pagos_hechos_exceso_trabajador" model="hr.salary.rule">
+            <field name="name">Pagos hechos con exceso al trabajador</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">013</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="errores" model="hr.salary.rule">
+            <field name="name">Errores</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">014</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="perdidas" model="hr.salary.rule">
+            <field name="name">Pérdidas</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">015</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="averias" model="hr.salary.rule">
+            <field name="name">Averías</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">016</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="adiquisicion_articulos_producidos" model="hr.salary.rule">
+            <field name="name">Adquisicion de articulos producidos por la empresa</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">017</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="fondo_de_ahorro" model="hr.salary.rule">
+            <field name="name">Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">FAHO</field>
+            <field name="code_sat">018</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">result = contract.fondo_ahorro and contract.fondo_ahorro > 0.00</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = ((categories.BASE * contract.fondo_ahorro) / 100) * contract.dias_laborados</field>
+        </record>
+        <record id="cuotas_sindicales" model="hr.salary.rule">
+            <field name="name">Cuotas sindicales</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">CS</field>
+            <field name="code_sat">019</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">ontract.cuota_sindical and contract.cuota_sindical > 0.00</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (categories.BASE * contract.cuota_sindical) / 100</field>
+        </record>
+        <record id="ausencia" model="hr.salary.rule">
+            <field name="name">Ausencia (Ausentismo)</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">ABSENCE</field>
+            <field name="code_sat">020</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">python</field>
+            <field name="condition_python">
+result = worked_days.WORK000 and worked_days.WORK000.number_of_days > 0
+            </field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = worked_days.WORK000.number_of_days * contract.daily_wage
+            </field>
+        </record>
+        <record id="cuotas_obrero_patronales" model="hr.salary.rule">
+            <field name="name">Cuotas obrero patronales</field>
+            <field name="sequence" eval="150"/>
+            <field name="code">021</field>
+            <field name="code_sat">021</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = 0.0</field>
+        </record>
+        <record id="impuestos_locales" model="hr.salary.rule">
+            <field name="code">022</field>
+            <field name="code_sat">022</field>
+            <field name="name">Impuestos Locales</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+        </record>
+        <record id="aportaciones_voluntarias" model="hr.salary.rule">
+            <field name="code">023</field>
+            <field name="code_sat">023</field>
+            <field name="name">Aportaciones voluntarias</field>
+            <field name="category_id" ref="DEDUCCIONES"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view -->
+    <record id="odoo_order_form_view" model="ir.ui.view">
+        <field name="name">odoo.order.form.view</field>
+        <field name="model">odoo.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="subscription_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="users"/>
+                                <field name="date_start"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="odoo_order_tree_view" model="ir.ui.view">
+        <field name="name">odoo.order.tree.view</field>
+        <field name="model">odoo.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="subscription_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="odoo_order_action" model="ir.actions.act_window">
+        <field name="name">odoo.order.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">odoo.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_order_odoo"
+            parent="configuration"
+            action="odoo_order_action"
+            name="Order Odoo"/>
+
+</odoo>

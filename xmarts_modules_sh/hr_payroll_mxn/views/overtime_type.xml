@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="overtime_type_tree" model="ir.ui.view">
+        <field name="name">overtime.type.tree</field>
+        <field name="model">overtime.type</field>
+        <field name='arch' type='xml'>
+            <tree string="Horas extras">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="overtime_type_form" model="ir.ui.view">
+        <field name="name">overtime.type.form</field>
+        <field name="model">overtime.type</field>
+        <field name='arch' type='xml'>
+            <form>
+                <sheet string="Tipo Horas Extra">
+                    <field name="code" class="oe_inline"/> -
+                    <field name="name" class="oe_inline"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="overtime_type_action" model="ir.actions.act_window">
+        <field name="name">Horas extras</field>
+        <field name="res_model">overtime.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="overtime_type_menu" action="overtime_type_action" parent="l10n_mx_payroll_main" />
+
+</odoo>

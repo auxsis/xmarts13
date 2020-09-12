@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+       <record model="hr.salary.rule" id="RETENCIONES01">
+            <field name="code">01</field>
+            <field name="code_sat">01</field>
+            <field name="name">Servicios profesionales</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES02">
+            <field name="code">02</field>
+            <field name="code_sat">02</field>
+            <field name="name">Regalias por derechos de autor</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES03">
+            <field name="code">03</field>
+            <field name="code_sat">03</field>
+            <field name="name">Autotransporte terrestre de carga</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES04">
+            <field name="code">04</field>
+            <field name="code_sat">04</field>
+            <field name="name">Servicios prestados por comisionistas</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES05">
+            <field name="code">05</field>
+            <field name="code_sat">05</field>
+            <field name="name">Arrendamiento</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES06">
+            <field name="code">06</field>
+            <field name="code_sat">06</field>
+            <field name="name">Enajenacion de acciones.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES07">
+            <field name="code">07</field>
+            <field name="code_sat">07</field>
+            <field name="name">Enajenacion de bienes objeto de la LIEPS, a traves de mediadores, agentes, representantes, corredores, consignatarios o distribuidores</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES08">
+            <field name="code">08</field>
+            <field name="code_sat">08</field>
+            <field name="name">Enajenacion de bienes inmuebles consignada en escritura publica</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES09">
+            <field name="code">09</field>
+            <field name="code_sat">09</field>
+            <field name="name">Enajenacion de otros bienes, no consignada en escritura publica</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES10">
+            <field name="code">10</field>
+            <field name="code_sat">10</field>
+            <field name="name">Adquisicion de desperdicios industriales</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES11">
+            <field name="code">11</field>
+            <field name="code_sat">11</field>
+            <field name="name">Adquisicion de bienes consignada en escritura publica</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES12">
+            <field name="code">12</field>
+            <field name="code_sat">12</field>
+            <field name="name">Adquisicion de otros bienes, no consignada en escritura publica</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES13">
+            <field name="code">13</field>
+            <field name="code_sat">13</field>
+            <field name="name">Otros retiros de AFORE.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES14">
+            <field name="code">14</field>
+            <field name="code_sat">14</field>
+            <field name="name">Dividendos o utilidades distribuidas.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES15">
+            <field name="code">15</field>
+            <field name="code_sat">15</field>
+            <field name="name">Remanente distribuible.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES16">
+            <field name="code">16</field>
+            <field name="code_sat">16</field>
+            <field name="name">Intereses.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES17">
+            <field name="code">17</field>
+            <field name="code_sat">17</field>
+            <field name="name">Arrendamiento en fideicomiso.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES18">
+            <field name="code">18</field>
+            <field name="code_sat">18</field>
+            <field name="name">Pagos realizados a favor de residentes en el extranjero.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES19">
+            <field name="code">19</field>
+            <field name="code_sat">19</field>
+            <field name="name">Enajenacion de acciones u operaciones en bolsa de valores.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES20">
+            <field name="code">20</field>
+            <field name="code_sat">20</field>
+            <field name="name">Obtencion de premios.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES21">
+            <field name="code">21</field>
+            <field name="code_sat">21</field>
+            <field name="name">Fideicomisos que no realizan actividades empresariales.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES22">
+            <field name="code">22</field>
+            <field name="code_sat">22</field>
+            <field name="name">Planes personales de retiro.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES23">
+            <field name="code">23</field>
+            <field name="code_sat">23</field>
+            <field name="name">Intereses reales deducibles por creditos hipotecarios.</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES24">
+            <field name="code">24</field>
+            <field name="code_sat">24</field>
+            <field name="name">Operaciones Financieras Derivadas de Capital</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+       <record model="hr.salary.rule" id="RETENCIONES25">
+            <field name="code">25</field>
+            <field name="code_sat">25</field>
+            <field name="name">Otro tipo de retenciones</field>
+            <field name="category_id" ref="retenciones"/>
+       </record>
+
+    </data>
+</odoo>
+

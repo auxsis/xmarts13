@@ -5,6 +5,11 @@
 .ks_dashboard_ninja {
       margin-bottom: 20px;
 }
+
+.ks_dashboard_main_content {
+    overflow: auto;
+    height:100%;
+}
 .ks_dashboard_ninja_header{
     text-align : right;
     display: flex ;
@@ -15,7 +20,9 @@
     margin-bottom: 25px;
 }
 
-
+.ks_overflow {
+    overflow: auto;
+}
 
 .ks_dashboard_header_name {
         margin: 0;
@@ -303,7 +310,7 @@
 }
 
 .ks_dashboard_icon_l5 > img{
-    width: 20px;
+    width: 20px !important;
     height: 20px;
     margin: 10px;
 }
@@ -385,7 +392,7 @@
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0px;
-  z-index: 8;
+  z-index: 10;
 }
 
 .ks_dashboard_datepicker_z-index{
@@ -404,6 +411,13 @@
     display: flex;
     flex-direction: row;
 }
+@media(max-width: 475px){                                                                                                                                                                                                                                           
+    .ks_date_filter_selection_input{
+        display: -webkit-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 .ks_date_selection_box{
     display: flex;
@@ -413,6 +427,13 @@
 .ks_date_input_fields{
     display: flex;
     align-items: center;
+}
+@media(max-width: 475px){
+    .ks_date_input_fields{
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+    }
 }
 
 .ks_date_filter_selected > span{
@@ -454,6 +475,8 @@
 .ks_btn_middle_child{
     border-radius: 0 !important;
     height: 100%;
+    margin-right:10px;
+
 }
 
 .ks_btn_middle_child input, .ks_btn_last_child input {
@@ -543,10 +566,8 @@
     }
 }
 
-.ks_height_100 {
-    height: 100% !important;
+.ks_date_filter_dropdown_transform {
+    transform: translate3d(0px, 0px, 0px) !important;
 }
-// .o_web_client .o_main_navbar {
-//  z-index:10000000000;
-//
-// }
+
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form view -->
+    <record id="xma_server_form_view" model="ir.ui.view">
+        <field name="name">xmarts.server.form.view</field>
+        <field name="model">xmarts.server</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                           <field name="name"/>
+                            <field name="active"/>
+                            <field name="user"/>
+                            <field name="server_ip"/>
+                        </group>
+                    </group>
+                 </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="xma_subscription_tree_view" model="ir.ui.view">
+        <field name="name">xmarts.server.tree.view</field>
+        <field name="model">xmarts.server</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="user"/>
+                <field name="server_ip"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="xma_server_action" model="ir.actions.act_window">
+        <field name="name">xmarts.server.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">xmarts.server</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_server_odoo"
+            parent="xma_project.configuration"
+            action="xma_server_action"
+            name="Servers Odoo"/>
+
+</odoo>

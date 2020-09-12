@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Otros pagos -->
+    <record id="ISRSUB_EMP" model="hr.salary.rule">
+        <field name="name">Subsidio al empleo</field>
+        <field name="sequence" eval="150"/>
+        <field name="code">ISRSUB</field>
+        <field name="code_sat"></field>
+        <field name="salary_payment_type_id" ref="hr_payroll_mxn.salary_type_02"/>
+        <field name="category_id" ref="hr_payroll_mxn.category_otros"/>
+        <field name="condition_select">none</field>
+        <field name="condition_python">
+subsidio_obj = payslip.env['isr.subcidio.table']
+# Update base amount substracting non tax subjected inputs
+base = categories.PERGRA
+
+values = subsidio_obj.search(
+    [('type_id', '=', contract.isr_table.id), ('limite_min', '&lt;=', base)],
+    limit=1, order='limite_min desc',
+)
+result = values.subcidio
+        </field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+base = categories.PERGRA
+isr_table_type = payslip.env['isr.table.type'].search([('number_of_days','=',contract.isr_table.number_of_days)], limit=1)
+isr_sub_table = payslip.env['isr.subcidio.table']
+isr_sub = isr_sub_table.search([('type_id', '=', isr_table_type.id), ('limite_min', '&lt;=', base)],limit=1, order='limite_min desc',)
+result = isr_sub.subcidio
+        </field>
+    </record>
+
+</odoo>

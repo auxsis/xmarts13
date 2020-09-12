@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ausencia_01" model="hr.leave.type">
+        <field name="name">Falta</field>
+        <field name="active">True</field>
+        <field name="color_name">black</field>
+    </record>
+    <record id="ausencia_02" model="hr.leave.type">
+        <field name="name">Falta_justificada</field>
+        <field name="active">True</field>
+        <field name="color_name">magenta</field>
+    </record>
+    <record id="ausencia_03" model="hr.leave.type">
+        <field name="name">Permiso_con_goce_de_sueldo</field>
+        <field name="active">True</field>
+        <field name="color_name">violet</field>
+    </record>
+    <record id="ausencia_04" model="hr.leave.type">
+        <field name="name">Permiso_sin_goce_de_sueldo</field>
+        <field name="active">True</field>
+        <field name="color_name">ivory</field>
+    </record>
+    <record id="ausencia_05" model="hr.leave.type">
+        <field name="name">Enfermedad</field>
+        <field name="active">True</field>
+        <field name="color_name">brown</field>
+    </record>
+    <record id="ausencia_06" model="hr.leave.type">
+        <field name="name">Maternidad</field>
+        <field name="active">True</field>
+        <field name="color_name">lightgreen</field>
+    </record>
+    <record id="ausencia_07" model="hr.leave.type">
+        <field name="name">Castigo</field>
+        <field name="active">True</field>
+        <field name="color_name">black</field>
+    </record>
+</odoo>

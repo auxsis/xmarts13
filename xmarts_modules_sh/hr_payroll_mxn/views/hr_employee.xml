@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="l10n_mx_employee" model="ir.ui.view">
+        <field name="name">l10n_mx_employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name='arch' type='xml'>
+            <field name="country_id" position="after">
+                <field name="vat" />
+                <field name="curp"/>
+            </field>
+            <field name="address_home_id" position="before">
+                <field name="address_fiscal_id" />
+            </field>
+
+            <field name="country_id" position="after">
+                <field name="ssnid"/>
+            </field>
+            <field name="department_id" position="before">
+                <field name="syndicated"/>
+                <field name="work_number"/>
+                <newline/>
+            </field>
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page string="Infonavit">
+                    <group string="Infonavit">
+                        <field name="infonavit_loan_type"/>
+                        <field name="infonavit_loan_qty" attrs="{'invisible': [('infonavit_loan_type', '=', 'none')]}" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
